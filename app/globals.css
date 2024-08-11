@@ -7,29 +7,58 @@
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
 }
-
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital@0;1&family=Oswald:wght@200..700&display=swap');
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
+    --background-start-rgb: 255, 255, 255;
     --background-end-rgb: 0, 0, 0;
   }
 }
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-  
-
+  background: url("/background.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
-
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+  .flex-login {
+    display: flex;
+    flex-direction: column;
+    height: 44%;
+    width: 60%; /* Adjust as needed */
+    background-color: lightblue;
+    position: relative;
+    padding: 10px;
+
+    justify-content: center;
+  }
+
+  .login-label {
+    font-size: large;
+    height: 25%;
+    font-family: "font-testeo";
+  }
+
+  .montserrat-normal {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+  }
+  .login-div {
+    height: 90%;
+    background-color: aliceblue;
+  }
+  .oswald-login {
+    font-family: "Oswald", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
   }
 }
