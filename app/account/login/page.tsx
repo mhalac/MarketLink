@@ -1,6 +1,3 @@
-export default function Temp() {
-    <div className="size-full bg-slate-500">
-
-
-    </div>
+export default function Login() {
+  return <div className="bg-slate-600 w-[100vw] h-[100vh]"></div>;
 }

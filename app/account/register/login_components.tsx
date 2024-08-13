@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {useState } from "react";
 import { API_REQUEST } from "@/public/api_facilitator";
 import {useRouter } from "next/navigation";
 
@@ -6,7 +6,6 @@ let data = {
   mail: "",
   password: "",
 };
-let recieved = false;
 export function MailInput() {
   const [mail, setMail] = useState("");
   data.mail = mail;
