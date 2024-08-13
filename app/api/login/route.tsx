@@ -9,6 +9,7 @@ export async function GET(request: Request) {
 // Handles POST requests to /api
 export async function POST(request: Request) {
   // ...
-  console.log(request)
+  const data = await request.json();
+  console.log(data)
   return NextResponse.json({ message: "Hello World" });
 }
