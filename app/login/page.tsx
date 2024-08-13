@@ -1,33 +1,33 @@
 "use client";
 import { API_REQUEST } from "@/public/api_facilitator";
 import React, { useState } from "react";
-import { MailInput, PasswordInput } from "./login_components";
+import { LoginOutput, MailInput, PasswordInput} from "./login_components";
+import { potentialUser } from "../interfaces/register";
 
 
 export default function Login() {
-  const [mail, setMail] = useState(null);
-
   return (
-    <div className="bg-[url('/background.jpg')] bg-cover bg-center h-screen w-full relative">
-      
-
-      <div className="absolute inset-0 flex items-center justify-center z-0">
-        <div className="absolute h-2/5 w-5/12 outline backdrop-blur-lg p-8 flex flex-col gap-6">
-          <label className="oswald-medium text-2xl">
-            E-Mail
+    <div className="bg-[url('/background.jpg')] bg-cover bg-center h-screen flex flex-col items-center justify-center w-full relative">
+      <div className="flex flex-col items-center justify-center mb-8">
+        <div className="p-4 rounded-lg">
+          <label className="text-white oswald-medium text-5xl px-4 py-2">
+            SIGN UP
           </label>
-          <MailInput />
-          <label className="oswald-medium text-2xl">
-            Password
-          </label>
-          <PasswordInput />
         </div>
       </div>
-      <div className="relative z-10 flex items-center justify-center top-60">
-        <label className="text-white absolute oswald-medium text-5xl">
-          SING UP
-        </label>
+
+      <div className="flex flex-col items-center  w-[65vw] p-6 max-w-[65vw]">
+        <div className=" outline p-12 rounded-lg backdrop-blur-lg flex flex-col gap-4 w-full max-w-2xl min-h-[48vh]">
+          <label className="oswald-medium text-2xl text-gray-800">E-Mail</label>
+          <MailInput  />
+          <div/><div/><div/>
+          <label className="oswald-medium text-2xl text-gray-800">Password</label>
+          <PasswordInput />
+          <LoginOutput />
+        </div>
       </div>
+    
     </div>
+    
   );
 }
