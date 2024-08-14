@@ -1,6 +1,8 @@
 
 import { NextResponse } from "next/server";
 
+import {GenerateConection} from "./handle_user";
+
 // Handles GET requests to /api
 export async function GET(request: Request) {
     
@@ -12,6 +14,8 @@ export async function POST(request: Request) {
 
   const data = await request.json();
   console.log(data)
+  
+
   return NextResponse.json({ message: "Hello World" });
 
 }
