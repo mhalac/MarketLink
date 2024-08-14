@@ -17,11 +17,8 @@ export async function GET(request: Request) {
 
 // Handles POST requests to /api
 export async function POST(request: Request) {
-  console.log(request.body?.getReader());
-
-  return NextResponse.json({ message: "Hello World" });
-  /*
-  conexion.query(`INSERT INTO usuario (email,password) VALUES ( ?,? );`,[email,passwd],function(err:any,results:any,fields:any){
+  const resp = await request.json()
+  conexion.query(`INSERT INTO usuario (email,password) VALUES ( ?,? );`,[resp.email,resp.password],function(err:any,results:any,fields:any){
     if(!err){
       console.log("Data ingresada correctamente");
     }else{
@@ -30,7 +27,7 @@ export async function POST(request: Request) {
 
     
   });
-  */
+  return NextResponse.json({ message: "Hello World" });
 
 
 }

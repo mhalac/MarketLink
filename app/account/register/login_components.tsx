@@ -2,10 +2,7 @@ import React, { ChangeEventHandler, useEffect, useState } from "react";
 import { API_REQUEST } from "@/public/api_facilitator";
 import { useRouter } from "next/navigation";
 
-let loginForm = new FormData();
 const globals = {email:'',password:""};
-
-
 
 
 
@@ -48,9 +45,8 @@ export function LoginOutput() {
     
     API_REQUEST("/login", "POST",JSON.stringify(globals) )
       .then(() => {
-        console.log(loginForm)
         //router.push("http://localhost:3000/account/login"); // Redirect to the desired URL after successful login
-        loginForm = new FormData();
+
       })
       .catch((error) => {
         console.error("API request failed", error);

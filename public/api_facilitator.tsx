@@ -7,7 +7,7 @@ export async function API_REQUEST(
   cabecera: Headers = new Headers()
 ) {
   
-  console.log("body sera",JSON.parse(data))
+  console.log("body sera",data)
   cabecera.append("Content-Type", "application/json");
   cabecera.append("Access-Control-Allow-Origin","*")
   if (locally) {
@@ -16,7 +16,7 @@ export async function API_REQUEST(
 
   let req = await fetch(url, {
     method: verb,
-    body: JSON.parse(data),
+    body: data,
     headers: cabecera,
     
   });
