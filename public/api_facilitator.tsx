@@ -6,10 +6,7 @@ export async function API_REQUEST(
   locally: boolean = true,
   cabecera: Headers = new Headers()
 ) {
-  
-  console.log("body sera",data)
   cabecera.append("Content-Type", "application/json");
-  cabecera.append("Access-Control-Allow-Origin","*")
   if (locally) {
     url = `http://localhost:3000/api${url}`;
   }
@@ -18,10 +15,8 @@ export async function API_REQUEST(
     method: verb,
     body: data,
     headers: cabecera,
-    
   });
-  console.log(req)
   let response = await req.json();
-  
+
   return response;
 }

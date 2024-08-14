@@ -40,13 +40,13 @@ export function PasswordInput() {
 
 export function LoginOutput() {
   const router = useRouter();
-
+  const [valor_boton,setBoton] = useState("Enviar");
   function sendInfo() {
     
     API_REQUEST("/login", "POST",JSON.stringify(globals) )
       .then(() => {
         //router.push("http://localhost:3000/account/login"); // Redirect to the desired URL after successful login
-
+        setBoton("Enviando...");
       })
       .catch((error) => {
         console.error("API request failed", error);
@@ -58,7 +58,7 @@ export function LoginOutput() {
       className="text-slate-950 bg-green-500 rounded-full relative h-[5vh] w-[10vw] my-10 font-oswald"
       onClick={sendInfo}
     >
-      Enviar
+      {valor_boton}
     </button>
   );
 }
