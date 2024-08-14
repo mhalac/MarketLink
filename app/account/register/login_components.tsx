@@ -1,29 +1,32 @@
-import React, {useState } from "react";
+import React, { ChangeEventHandler, useEffect, useState } from "react";
 import { API_REQUEST } from "@/public/api_facilitator";
-import {useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 
-let data = {
-  mail: "",
-  password: "",
-};
+let loginForm = new FormData();
+const globals = {email:'',password:""};
+
+
+
+
+
 export function MailInput() {
-  const [mail, setMail] = useState("");
-  data.mail = mail;
+  const [mail,changeMail] = useState("")
   return (
     <input
       type="email"
       className="text-slate-950 rounded-full h-11 w-2/3 font-oswald text-sm  placeholder:text-gray-700 pl-14"
       value={mail}
       onChange={(e) => {
-        setMail(e.target.value);
+        changeMail(e.target.value);
+        globals.email = e.target.value;
       }}
     />
   );
 }
 
 export function PasswordInput() {
-  const [password, setPassword] = useState("");
-  data.password = password;
+  const [password,changePassword] = useState("")
+
 
   return (
     <input
@@ -31,7 +34,8 @@ export function PasswordInput() {
       className="text-slate-950 rounded-full h-11 w-2/3 font-oswald text-sm placeholder:text-gray-700 pl-14"
       value={password}
       onChange={(e) => {
-        setPassword(e.target.value);
+        changePassword(e.target.value);
+        globals.password = e.target.value;
       }}
     />
   );
@@ -41,10 +45,12 @@ export function LoginOutput() {
   const router = useRouter();
 
   function sendInfo() {
-    console.log(JSON.stringify(data));
-    API_REQUEST("/login", "POST", JSON.stringify(data))
+    
+    API_REQUEST("/login", "POST",JSON.stringify(globals) )
       .then(() => {
-        router.push("http://localhost:3000/account/login"); // Redirect to the desired URL after successful login
+        console.log(loginForm)
+        //router.push("http://localhost:3000/account/login"); // Redirect to the desired URL after successful login
+        loginForm = new FormData();
       })
       .catch((error) => {
         console.error("API request failed", error);
