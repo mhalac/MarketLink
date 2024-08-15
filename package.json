@@ -2,6 +2,7 @@
   "name": "marketlink",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -14,6 +15,7 @@
     "dotenv": "^16.4.5",
     "mysql2": "^3.11.0",
     "next": "14.2.5",
+    "next-auth": "^4.24.7",
     "react": "^18",
     "react-dom": "^18",
     "request-ip": "^3.3.0",

@@ -7,7 +7,7 @@ function HomePage() {
 
     useEffect(() => {
         // Redirect to the login page when the component mounts
-        router.push("http://localhost:3000/account/register");
+        router.push("http://localhost:3000/account/signup");
     }, [router]);
 
     return (

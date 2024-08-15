@@ -1,6 +1,7 @@
+"use server"
 import { NextResponse } from "next/server";
 
-import { generateConnection } from "../db/handle_user";
+import { generateConnection } from "../../app/api/db/handle_user";
 import { Cipher } from "crypto";
 const conexion = generateConnection();
 

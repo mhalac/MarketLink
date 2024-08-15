@@ -1,3 +1,4 @@
+"use server"
 export async function API_REQUEST(
   url: string,
   verb: string,
