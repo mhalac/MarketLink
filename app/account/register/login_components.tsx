@@ -1,13 +1,13 @@
 import React, { ChangeEventHandler, useEffect, useState } from "react";
 import { API_REQUEST } from "@/public/api_facilitator";
 import { useRouter } from "next/navigation";
+import { NextResponse } from "next/server";
+import { headers } from "next/headers";
 
-const globals = {email:'',password:""};
-
-
+const globals = { email: "", password: "" };
 
 export function MailInput() {
-  const [mail,changeMail] = useState("")
+  const [mail, changeMail] = useState("");
   return (
     <input
       type="email"
@@ -22,8 +22,7 @@ export function MailInput() {
 }
 
 export function PasswordInput() {
-  const [password,changePassword] = useState("")
-
+  const [password, changePassword] = useState("");
 
   return (
     <input
@@ -37,16 +36,25 @@ export function PasswordInput() {
     />
   );
 }
-
 export function LoginOutput() {
+  const [valor_boton, setBoton] = useState("Enviar");
+
   const router = useRouter();
-  const [valor_boton,setBoton] = useState("Enviar");
   function sendInfo() {
-    
-    API_REQUEST("/login", "POST",JSON.stringify(globals) )
+    API_REQUEST("/login", "POST", JSON.stringify(globals))
       .then(() => {
-        //router.push("http://localhost:3000/account/login"); // Redirect to the desired URL after successful login
         setBoton("Enviando...");
+        const head = new Headers();
+        head.append("intent","creation-status");
+        const checkLogin = setInterval(async function () {
+          const resp:NextResponse = await API_REQUEST("/login","GET","",true,head);
+          const txt = await resp.text;
+          // @ts-ignore
+          if(txt !== "loading"){
+            router.push("http://localhost:3000/account/login");
+          }
+          clearInterval(checkLogin);
+        }, 500);
       })
       .catch((error) => {
         console.error("API request failed", error);
@@ -62,3 +70,4 @@ export function LoginOutput() {
     </button>
   );
 }
+

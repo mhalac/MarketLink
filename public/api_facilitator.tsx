@@ -11,12 +11,22 @@ export async function API_REQUEST(
     url = `http://localhost:3000/api${url}`;
   }
 
-  let req = await fetch(url, {
-    method: verb,
-    body: data,
-    headers: cabecera,
-  });
-  let response = await req.json();
+  if (verb == "GET") {
+    const req = await fetch(url, {
+      method: verb,
+      headers: cabecera,
+    });
+    const response = await req.json();
+    return response;
+  }else{
+    const req = await fetch(url, {
+      method: verb,
+      body: data,
+      headers: cabecera,
+    });
+    const response = await req.json();
+    return response;
+  }
 
-  return response;
+
 }
