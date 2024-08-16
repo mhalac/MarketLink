@@ -1,19 +1,27 @@
 "use client";
 import { signup } from "@/app/actions/auth";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
-export function SignupForm(parent:any) {
+export function SignupForm() {
   const [user, setUser] = useState({ name: "", email: "", password: "" });
-  const [submitted, setSubmitted] = useState(false);
-  
+  const router = useRouter(); // Call useRouter unconditionally
+  const [status,setStauts] = useState("Sign Up")
 
   return (
+    
     <form
-      onSubmit={signup}
+      onSubmit={async (data)=>{
+        console.log("envie")
+        setStauts("Sending....")
+        const resp = await signup(data);
+        router.push("./signin")
+      }}
       className="space-y-[3vh] w-[30vw] flex flex-col items-center justify-center"
+      
     >
-      <div className="flex flex-col">
+      
+      <div  className="flex flex-col">
         <label htmlFor="name" className="text-slate-50text-lg font-bold">
           Name
         </label>
@@ -70,7 +78,7 @@ export function SignupForm(parent:any) {
         type="submit"
         className="mt-4 p-2 bg-blue-500 text-white rounded-md"
       >
-        Sign Up
+        {status}
       </button>
     </form>
   );

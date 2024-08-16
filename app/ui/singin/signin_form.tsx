@@ -9,21 +9,6 @@ export function SigninForm() {
       className="space-y-[3vh] w-[30vw] flex flex-col items-center justify-center"
     >
       <div className="flex flex-col">
-        <label htmlFor="name" className="text-slate-50text-lg font-bold">
-          Name
-        </label>
-        <input
-          id="name"
-          name="name"
-          placeholder="Name"
-          value={user.name}
-          onChange={(e) => {
-            setUser({...user,name:e.target.value});
-          }}
-          className="p-2 border text-black  border-gray-300 rounded-md"
-        />
-      </div>
-      <div className="flex flex-col">
         <label htmlFor="email" className="text-slate-50text-lg font-bold mb-2">
           Email
         </label>
