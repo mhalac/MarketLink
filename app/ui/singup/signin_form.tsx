@@ -6,11 +6,11 @@ export function SignupForm() {
   const [user, setUser] = useState({ name: "", email: "", password: "" });
   return (
     <form
-      action={signup}
-      className="space-y-[5vh] w-[30vw] flex flex-col items-center justify-center translate-y-[-2vh]"
+      onSubmit={signup}
+      className="space-y-[3vh] w-[30vw] flex flex-col items-center justify-center"
     >
       <div className="flex flex-col">
-        <label htmlFor="name" className="text-slate-50text-lg font-bold mb-2">
+        <label htmlFor="name" className="text-slate-50text-lg font-bold">
           Name
         </label>
         <input

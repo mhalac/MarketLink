@@ -1,9 +1,9 @@
-import { SignupForm } from "@/app/ui/singup/singup_form";
+import { SignupForm } from "@/app/ui/singup/signup_form";
 
 export default function SignupPage() {
   return (
     <div className="bg-cover flex justify-center h-[100vh] w-[100vw] items-center bg-center background-signup">
-      <div className="w-[30vw] min-h-[24.5rem] bg-black rounded-md flex items-center justify-center h-auto">
+      <div className="w-[30vw] min-h-[24.5rem] bg-black rounded-md outline flex items-center justify-center h-auto">
         <SignupForm />
       </div>
     </div>
