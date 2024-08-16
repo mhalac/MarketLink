@@ -1,11 +1,12 @@
 "use client";
 import { useState } from "react";
+import { login } from "./login";
 
 export function SigninForm() {
   const [user, setUser] = useState({ name: "", email: "", password: "" });
   return (
     <form
-      //onSubmit={signup}
+      onSubmit={login}
       className="space-y-[3vh] w-[30vw] flex flex-col items-center justify-center"
     >
       <div className="flex flex-col">

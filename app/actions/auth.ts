@@ -9,6 +9,5 @@ export async function signup(e: React.SyntheticEvent) {
         method: 'POST',
         body: data,
     });
-    console.log("hellow orld",response);
     return response;
 }
