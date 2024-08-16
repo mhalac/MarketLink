@@ -1,9 +1,13 @@
 "use client";
 import { signup } from "@/app/actions/auth";
-import { useState } from "react";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 
-export function SignupForm() {
+export function SignupForm(parent:any) {
   const [user, setUser] = useState({ name: "", email: "", password: "" });
+  const [submitted, setSubmitted] = useState(false);
+  
+
   return (
     <form
       onSubmit={signup}
