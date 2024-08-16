@@ -1,9 +1,9 @@
-"use server"
-export async function signup(e:Event,formData: FormData) {
-    e.preventDefault();
-    const response = await fetch("/api/auth/register",{
-        method:'POST',
-        body: JSON.stringify(formData),
-    })
+
+export async function signup(formData: FormData) {
+    
+    const response = await fetch("http://localhost:3000/api/auth/register", {
+        method: 'POST',
+        body: formData
+    });
     return response;
 }
