@@ -1,7 +1,6 @@
-const sql = require("mysql2");
+const sql = require("mysql2/promise");
 
-const pool = sql.createPool({
-    connectionLimit: 1,
+const pool = await sql.createConnection({
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
     database: process.env.DB_DB,
