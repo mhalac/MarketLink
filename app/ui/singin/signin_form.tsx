@@ -51,7 +51,7 @@ export function SigninForm() {
         type="submit"
         className="mt-4 p-2 bg-blue-500 text-white rounded-md"
       >
-        Sign Up
+        LOGIN
       </button>
     </form>
   );

@@ -8,14 +8,19 @@ export function SignupForm() {
   const router = useRouter(); // Call useRouter unconditionally
   const [status,setStauts] = useState("Sign Up")
 
-  return (
+  const form = (
     
     <form
       onSubmit={async (data)=>{
         console.log("envie")
-        setStauts("Sending....")
         const resp = await signup(data);
-        router.push("./signin")
+        if(resp.status == 405){
+          router.push("./signup?error=not_valid")
+        }else{
+          router.push("./signin")
+
+        }
+
       }}
       className="space-y-[3vh] w-[30vw] flex flex-col items-center justify-center"
       
@@ -82,4 +87,5 @@ export function SignupForm() {
       </button>
     </form>
   );
+  return form;
 }

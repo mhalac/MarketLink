@@ -1,18 +1,12 @@
-"use client"
 import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
-
-function HomePage() {
-    const router = useRouter();
-
-    useEffect(() => {
-        // Redirect to the login page when the component mounts
-        router.push("http://localhost:3000/account/signup");
-    }, [router]);
-
-    return (
+import { getSession } from 'next-auth/react';
+import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server';
+async function HomePage() {
+    const {isAuthenticated} = getKindeServerSession();
+    const isUserAuthenticated = await isAuthenticated();
+    return(
         <div>
-            {/* Content can be added here if needed */}
+            <p className='text-black text-8xl'> HOLAAAAA </p>
         </div>
     );
 }
