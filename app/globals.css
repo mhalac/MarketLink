@@ -35,7 +35,11 @@ body {
   }
   .oswald-medium {
     font-family: "Ubuntu", sans-serif;
-    font-weight: 700;
+    font-weight: 600;
     font-style: normal;
   }
+  .btn_header{
+    @apply rounded-sm p-3 oswald-medium;
+  }
+
 }

@@ -1,24 +1,16 @@
-export default function nada(){
-  
+import { NextResponse } from 'next/server'
+import { NextRequest } from 'next/server'
+import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server'
+// This function can be marked `async` if using `await` inside
+export  async function middleware(request: NextRequest) {
+    const client = await getKindeServerSession();
+    if(!(await client.isAuthenticated())){
+      return NextResponse.redirect(new URL('/', request.url))
+    }
+
 }
-/*
-import { NextResponse } from 'next/server';
-import type { NextRequest } from 'next/server';
-
-export function middleware(request: NextRequest) {
-  const url = request.nextUrl.clone();
-
-  // Check if the request is for an HTML file
-  if (url.pathname.endsWith('.html')) {
-    // Redirect to the root page or another TSX route
-    url.pathname = '/';
-    return NextResponse.redirect(url);
-  }
-
-  // Continue processing other requests
-  return NextResponse.next();
-}
-
+ 
+// See "Matching Paths" below to learn more
 export const config = {
-  matcher: '/:path*', // Apply middleware to all routes
-};*/
+  matcher: '/account/:path*',
+}

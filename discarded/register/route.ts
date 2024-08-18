@@ -1,3 +1,4 @@
+/*
 import { NextApiResponse, NextApiRequest } from "next";
 import { NextRequest, NextResponse } from "next/server";
 import db from "../../../util/db";
@@ -25,3 +26,4 @@ export async function POST(req: NextRequest) {
   return new NextResponse(user,{status:200})
 }
 
+*/
