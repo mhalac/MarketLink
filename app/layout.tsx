@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Barlow_Condensed } from "next/font/google";
 import "./globals.css";
+import SessionWrapper from "./components/sessionWrapper";
 
-const inter = Inter({ subsets: ["latin"] });
+const mukta = Barlow_Condensed({ subsets: ["latin"], weight: "400" });
 
 export const metadata: Metadata = {
   title: "Login",
@@ -15,8 +16,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
-    </html>
+    <SessionWrapper>
+      <html lang="es">
+        <body className={mukta.className}>{children}</body>
+      </html>
+    </SessionWrapper>
   );
 }

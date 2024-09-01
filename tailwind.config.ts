@@ -7,11 +7,7 @@ const config: Config = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {
-      backgroundImage: {
-        'custom-image': "url('/background.jpg')",      
-      },
-    },
+
   },
   plugins: [],
 };

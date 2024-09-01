@@ -21,12 +21,10 @@ body {
 }
 @layer utilities {
 
-  .background-signup{
-    background-image: url("https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+  .background-landing{
+    background-image: url("/landing.jpg");
   }
-  .background-signin{
-    background-image: url("https://images.unsplash.com/photo-1564296786842-4fc88fb50485?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
-  }
+
 
   .ubuntu-medium {
     font-family: "Ubuntu", sans-serif;
@@ -38,8 +36,6 @@ body {
     font-weight: 600;
     font-style: normal;
   }
-  .btn_header{
-    @apply rounded-sm p-3 oswald-medium;
-  }
+
 
 }
