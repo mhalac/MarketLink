@@ -17,7 +17,7 @@ export default function LandingUI() {
         <button
           className="bg-green-400 h-[20%] w-[50%]"
           onClick={() => {
-            router.push("/dashboard");
+            router.push("/tiendas");
           }}
         >
           ENTRAR
