@@ -1,4 +1,7 @@
 import Database from 'better-sqlite3';
-const db = new Database('market_db', {});
-db.pragma('journal_mode = WAL');
-export default db;
+
+export default function getDB() {
+    const db = new Database('market.db',{ fileMustExist: true});
+    db.pragma('journal_mode = WAL');
+    return db;
+}

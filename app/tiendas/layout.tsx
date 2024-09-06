@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Barlow_Condensed } from "next/font/google";
 import "../globals.css";
+import NavBar from "../ui/nav_bar";
 
 const mukta = Barlow_Condensed({ subsets: ["latin"], weight: "400" });
 
@@ -15,8 +16,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-      <html lang="es">
-        <body className={mukta.className}>{children}</body>
-      </html>
+    <html lang="es">
+      <body className={mukta.className}>
+        <div className="bg-cover h-[100vh] w-[100vw] flex justify-center background-landing flex-col items-center ">
+          <NavBar />
+          {children}
+        </div>
+      </body>
+    </html>
   );
 }

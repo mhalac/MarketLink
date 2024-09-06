@@ -1,4 +1,4 @@
-export default function Tienda({ params }: { params: { slug: string } }) {
-  console.log(params.slug);
+export default function Tienda({ params }: { params: { tienda: string } }) {
+  console.log(params.tienda);
   return <div></div>;
 }
