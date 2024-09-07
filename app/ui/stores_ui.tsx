@@ -29,7 +29,7 @@ export default function Stores() {
   }, []);
 
   return (
-    <div className="grid grid-cols-3 overflow-auto p-10 m-10 row-span-4  h-[85%] gap-5 col-span-3">
+    <div className="grid xl:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 overflow-auto p-10 m-10 row-span-4  h-[85%] gap-5 col-span-3">
       {list}
     </div>
   );
