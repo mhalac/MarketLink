@@ -10,10 +10,6 @@ export async function POST(req:NextRequest){
       
     statement.run(data.get("nombre"),data.get("desc"),data.get("ubic"))
 
-    const statement2 = db.prepare("SELECT * FROM negocio")
-
-    console.log(statement2.all());
-
     return NextResponse.json({status:200});
 }
 export function GET(){
