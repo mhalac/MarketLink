@@ -3,6 +3,7 @@
 "use client";
 
 import { getSession, signIn, useSession } from "next-auth/react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 export default function LandingUI() {
@@ -33,11 +34,17 @@ export default function LandingUI() {
       <button
         className="bg-green-400 h-[20%] w-[50%]"
         onClick={() => {
-          signIn("github");
+          signIn();
         }}
       >
         INICIAR SESION
       </button>
+      <Link
+        className="bg-green-400 h-[20%] w-[50%]"
+        href="/signup/"
+      >
+        <h1>REGISTRARSE</h1>
+      </Link>
     </div>
   );
 }

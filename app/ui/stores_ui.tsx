@@ -20,7 +20,6 @@ export default function Stores() {
         temp.push(
           <Store_Item title={element.titulo} key={index} id={element.id_negocio} desc={element.desc} />
         )
-        console.log(element);
 
       }
       changeList(temp);

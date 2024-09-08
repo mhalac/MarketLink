@@ -15,13 +15,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es">
-      <body className={mukta.className}>
         <div className="bg-cover h-[100vh] w-[100vw] flex justify-center background-landing flex-col items-center ">
           <NavBar />
           {children}
         </div>
-      </body>
-    </html>
   );
 }

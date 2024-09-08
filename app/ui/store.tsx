@@ -4,7 +4,6 @@ import { useRouter } from "next/navigation"
 
 export default function Store_Item(props:any) {
     const router = useRouter()
-    console.log(props);
     function Pressed(){
         router.push("/tienda/" + props.id)
     }
