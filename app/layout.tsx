@@ -10,11 +10,7 @@ export const metadata: Metadata = {
   description: "i dont know",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <SessionWrapper>
       <html lang="es">
