@@ -1,3 +1,4 @@
+"use client"
 export const api_hostname = "localhost:2000";
 import LandingUI from "./ui/landing_ui";
 import "@/app/globals.css"

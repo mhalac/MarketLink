@@ -83,7 +83,7 @@ export default function NavBar() {
       // si es empresario
     }
     WaitForRoles();
-  }, []);
+  }, [router]);
   return <div className="flex justify-center">
     { botones }
   </div>;
