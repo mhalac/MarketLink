@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import ThreeBarMenu from "@/app/ThreeBarMenu";
 
 export default function Registrar() {
   const [status, changeStatus] = useState("Enviar");
@@ -20,7 +21,11 @@ export default function Registrar() {
   }
 
   return (
-    <div className="bg-gradient-to-r from-cyan-500 to-purple-600 w-[50%] h-[85%] fixed rounded-lg grid grid-rows-5 justify-center shadow-2xl p-10">
+    <div className="bg-gradient-to-r from-cyan-500 to-purple-600 w-[50%] h-[85%] fixed rounded-lg grid grid-rows-5 justify-center shadow-md p-10">
+      <div className="absolute left-0">
+        <ThreeBarMenu/>
+      </div>
+
       <h1 className="text-6xl text-center mt-5 text-white font-bold">Registra tu negocio</h1>
       
       <form onSubmit={Submit} className="grid gap-8 grid-cols-2 mt-10 text-white">
