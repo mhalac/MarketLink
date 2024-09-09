@@ -10,7 +10,9 @@ export default function LandingUI() {
   if (status === "loading") {
     return <div className="h-screen flex items-center justify-center">Loading...</div>;
   }
-
+  if(status === "authenticated"){
+    router.push("/tiendas/")
+  }
 
   return (
     <div className="bg-slate-200 h-screen w-full flex flex-col justify-center items-center px-4 ">
@@ -18,7 +20,7 @@ export default function LandingUI() {
         MarketLink
       </h1>
       <p className="text-lg md:text-2xl text-gray-700 text-center mb-8">
-        ¡Únete a la mejor experiencia de compra!
+        ¡Revisa el stock de tu producto favorito!
       </p>
       <div className="w-full flex flex-col items-center">
         <button

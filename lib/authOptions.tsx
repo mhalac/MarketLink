@@ -4,13 +4,11 @@ import getDB from "@/util/db";
 import Credentials from "next-auth/providers/credentials";
 const bcrypt = require("bcrypt");
 
+import { GetRole } from "@/app/api/db/functions";
+
 const db = getDB();
 export const authOptions: NextAuthOptions = {
   providers: [
-    Github({
-      clientId: process.env.GITHUB_ID as string,
-      clientSecret: process.env.GITHUB_SECRET as string,
-    }),
     Credentials({
       name: "Credentials",
 
@@ -48,7 +46,9 @@ export const authOptions: NextAuthOptions = {
       return token;
     },
     session({ session, token }) {
+      //@ts-ignore
       session.user.id = token.id;
+      session.user.rol = GetRole(session.user?.name);
       return session;
     },
   },
