@@ -68,7 +68,7 @@ export default function NavBar() {
             <div className="bg-cyan-500 hover:bg-blue-400 mx-5 my-3 rounded-full flex justify-center items-center">
               <button
                 onClick={() => {
-                  router.push("/mitienda")
+                  router.push("/tiendas/mitienda")
                 }}
                 className="w-full h-full rounded-full flex items-center justify-center text-white"
               >
