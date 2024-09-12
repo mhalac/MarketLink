@@ -4,13 +4,13 @@ import React, { useState, useEffect } from 'react';
 export default function ThreeBarMenu() {
   const [isOpen, setIsOpen] = useState(false);
   const [shouldRenderMenu, setShouldRenderMenu] = useState(false);
-  const [isAnimating, setIsAnimating] = useState(false); // Estado para manejar la animación
+  const [isAnimating, setIsAnimating] = useState(false); 
 
   useEffect(() => {
     if (isOpen) {
-      setShouldRenderMenu(true); // Añadimos el menú al DOM
+      setShouldRenderMenu(true); 
       setTimeout(() => {
-        setIsAnimating(true); // Activamos la animación después de que el menú esté en el DOM
+        setIsAnimating(true);
       }, 50); // Retraso pequeño para dar tiempo al renderizado
     } else {
       setIsAnimating(false); // Desactivamos la animación
