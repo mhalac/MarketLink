@@ -21,7 +21,7 @@ export default function Registrar() {
   }
 
   return (
-    <div className="bg-gradient-to-r from-cyan-500 to-purple-600 w-[50%] h-[85%] fixed rounded-lg grid grid-rows-5 justify-center shadow-md p-10">
+    <div className="bg-gradient-to-r from-cyan-500 to-purple-600 w-full h-screen fixed rounded-lg grid grid-rows-5 justify-center shadow-md p-10">
       <div className="absolute left-0">
         <ThreeBarMenu/>
       </div>

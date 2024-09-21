@@ -3,6 +3,7 @@
 import { getSession, signIn, useSession } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import ThreeBarMenu from "../ThreeBarMenu";
 
 export default function LandingUI() {
   const router = useRouter();
@@ -15,8 +16,10 @@ export default function LandingUI() {
   }
 
   return (
-    <div className="bg-slate-200 h-screen w-full flex flex-col justify-center items-center px-4 ">
-      <h1 className="text-6xl md:text-8xl text-black text-center mb-6">
+    <div className="bg-slate-300 h-screen w-full">
+    <div className=" absolute top-0 left-0"><ThreeBarMenu/></div>
+    <div className="h-screen w-full flex flex-col justify-center items-center px-4 ">
+      <h1 className="text-6xl font-extrabold bg-gradient-to-r from-cyan-500 to-purple-600 bg-clip-text text-transparent leading-normal">
         MarketLink
       </h1>
       <p className="text-lg md:text-2xl text-gray-700 text-center mb-8">
@@ -24,7 +27,7 @@ export default function LandingUI() {
       </p>
       <div className="w-full flex flex-col items-center">
         <button
-          className="bg-green-500 text-white py-2 px-6 rounded-lg hover:bg-green-600 transition-all duration-300 w-full max-w-[300px] text-center mb-4"
+          className="bg-gradient-to-r from-cyan-500 to-purple-600 text-white py-2 px-6 rounded-lg transition-all duration-300 w-full max-w-[300px] text-center mb-4"
           onClick={() => {
             signIn();
           }}
@@ -33,11 +36,12 @@ export default function LandingUI() {
         </button>
         <Link
           href="/signup/"
-          className="bg-green-500 text-white py-2 px-6 rounded-lg hover:bg-green-600 transition-all duration-300 w-full max-w-[300px] text-center mb-4"
+          className="bg-gradient-to-r from-cyan-500 to-purple-600 text-white py-2 px-6 rounded-lg transition-all duration-300 w-full max-w-[300px] text-center mb-4"
         >
           REGISTRARSE
         </Link>
       </div>
+    </div>
     </div>
   );
 }

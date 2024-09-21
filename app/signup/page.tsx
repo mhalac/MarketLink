@@ -12,22 +12,24 @@ export default function MenuRegister() {
         })
 
     }
-    return(
-        <div className="w-full h-screen flex flex-col items-center justify-center ">
-        <div className="bg-gradient-to-r from-cyan-500 to-purple-600 w-[50%] h-[85%] fixed rounded-lg grid grid-rows-5 justify-center shadow-md p-10">
-            <div className="absolute left-0">
+    return(            
+        <div>
+            <div className="absolute left-0 top-0">
             <ThreeBarMenu/>
             </div>
+        <div className="bg-slate-300 h-screen w-full flex flex-col justify-center items-center ">
+            <div className="reactive justify-center rounded-lg ">
                 <form onSubmit={Submit}>
-                    <label className="text-white m-3" htmlFor="username">Usuario</label>
-                    <input className="bg-white text-black rounded-md m-3" name="username" id="username" type="text" />
+                    <label className="text-3xl font-extrabold bg-gradient-to-r from-cyan-500 to-purple-600 bg-clip-text text-transparent leading-normal m-3" htmlFor="username">Usuario</label>
+                    <input className="text-2xl bg-white text-black rounded-md m-3" name="username" id="username" type="text" />
 
-                    <label className="text-white m-3" htmlFor="password">Password</label>
-                    <input className="bg-white text-black rounded-md m-3" name="password" id="password" type="password" />
+                    <label className="text-3xl font-extrabold bg-gradient-to-r from-cyan-500 to-purple-600 bg-clip-text text-transparent leading-normal m-3" htmlFor="password">Password</label>
+                    <input className="text-2xl bg-white text-black rounded-md m-3" name="password" id="password" type="password" />
 
-                    <button  className="" type="submit">ENVIAR</button>
+                    <button  className="bg-gradient-to-r from-cyan-500 to-purple-600 rounded text-3xl text-white m-3" type="submit">ENVIAR</button>
                     </form>
                 </div>
             </div>
+        </div>
     )
 }    

@@ -24,10 +24,10 @@ export default function ThreeBarMenu() {
   };
 
   return (
-    <div className="relative z-50">
+    <div className="relative z-50 ">
       <button 
         onClick={toggleMenu} 
-        className="p-4 text-my-blue rounded-br"
+        className="p-4 text-white rounded-br"
       >
         <div className="w-6 h-1 bg-purple-600 mb-1 rounded"></div>
         <div className="w-6 h-1 bg-purple-600 mb-1 rounded"></div>
@@ -36,8 +36,9 @@ export default function ThreeBarMenu() {
 
       {/* Solo renderizamos el menú si shouldRenderMenu es true */}
       {shouldRenderMenu && (
+      <div className='absolute top-0'>
         <nav 
-          className={`menu-bar fixed w-64 h-full bg-my-blue text-white
+          className={`menu-bar fixed w-64 h-full bg-gradient-to-r from-cyan-500 to-purple-600 text-white
                       flex flex-col items-center pt-10 transition-transform duration-300 
                       ${isAnimating ? 'translate-x-0' : '-translate-x-full'}`}>
           
@@ -53,6 +54,7 @@ export default function ThreeBarMenu() {
           <a href="../tiendas" className="py-2 px-4">Tiendas</a>
           <a href="../contactanos" className="py-2 px-4">Contacto</a>
         </nav>
+        </div>
       )}
     </div>
   );

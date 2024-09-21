@@ -10,7 +10,7 @@ export default function MiTienda() {
       });
       const negocio = (await datos.json()).final_result;
       cambiarTienda(
-        <div className="bg-fuchsia-500 w-[50%] h-[90%] grid grid-cols-3 rounded-bl-2xl  rounded-br-2xl translate-y-10 grid-rows-8  outline">
+        <div className="bg-gradient-to-r from-cyan-500 to-purple-600 w-[75%] h-[85%] fixed rounded-lg grid grid-rows-5 justify-center shadow-md p-10">
           <div className="row-span-1 col-span-3"></div>
           <div className="col-span-3 h-[100%] w-[100%] place-items-center grid grid-rows-3 ">
             <h1 className="text-4xl text-center text-white">
