@@ -23,7 +23,7 @@ export default function Tienda({ params }: { params: { tienda: string } }) {
 
   return (
     <div className="w-full h-screen flex flex-col items-center justify-center ">
-    <div className="bg-gradient-to-r from-cyan-500 to-purple-600 w-[75%] h-[85%] fixed rounded-lg grid grid-rows-5 justify-center shadow-md p-10">
+    <div className="bg-gradient-to-r from-cyan-500 to-purple-600 w-full h-screan fixed rounded-lg grid grid-rows-5 justify-center shadow-md p-10">
     <div className="absolute left-0">
         <ThreeBarMenu/>
         </div>
