@@ -40,7 +40,10 @@ export default function ThreeBarMenu() {
         <nav 
           className={`menu-bar fixed w-64 h-full bg-gradient-to-r from-cyan-500 to-purple-600 text-white
                       flex flex-col items-center pt-10 transition-transform duration-300 
-                      ${isAnimating ? 'translate-x-0' : '-translate-x-full'}`}>
+                      ${isAnimating ? 'translate-x-0' : '-translate-x-full'}`}          
+          onMouseLeave={() => setIsOpen(false)}>
+
+  
           
           {/* Botón para cerrar el menú */}
           <button 
