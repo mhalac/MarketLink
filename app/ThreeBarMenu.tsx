@@ -1,64 +1,51 @@
 "use client";
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 export default function ThreeBarMenu() {
   const [isOpen, setIsOpen] = useState(false);
-  const [shouldRenderMenu, setShouldRenderMenu] = useState(false);
-  const [isAnimating, setIsAnimating] = useState(false); 
 
-  useEffect(() => {
-    if (isOpen) {
-      setShouldRenderMenu(true); 
-      setTimeout(() => {
-        setIsAnimating(true);
-      }, 50); // Retraso pequeño para dar tiempo al renderizado
-    } else {
-      setIsAnimating(false); // Desactivamos la animación
-      const timer = setTimeout(() => setShouldRenderMenu(false), 300); // Esperamos la duración de la transición antes de eliminar el menú
-      return () => clearTimeout(timer);
-    }
-  }, [isOpen]);
-
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
+  const openMenu = () => {
+    setIsOpen(true);
   };
 
+  const closeMenu = () => {
+    setIsOpen(false);
+  };
   return (
     <div className="relative z-50 ">
+      
+      <div 
+        className="absolute left-0 h-screen w-6 z-40" 
+        onMouseEnter={openMenu} //abre el menu 
+      ></div>
+      
       <button 
-        onClick={toggleMenu} 
+        onClick={openMenu} 
         className="p-4 text-white rounded-br"
       >
-        <div className="w-6 h-1 bg-gradient-to-r from-cyan-500 to-purple-600 mb-1 rounded"></div>
-        <div className="w-6 h-1 bg-gradient-to-r from-cyan-500 to-purple-600 mb-1 rounded"></div>
-        <div className="w-6 h-1 bg-gradient-to-r from-cyan-500 to-purple-600 rounded"></div>
+        <div className="w-6 h-1 bg-gradient-to-r from-cyan-500 to-purple-600 shadow-2xl mb-1 rounded"></div>
+        <div className="w-6 h-1 bg-gradient-to-r from-cyan-500 to-purple-600 shadow-2xl mb-1 rounded"></div>
+        <div className="w-6 h-1 bg-gradient-to-r from-cyan-500 to-purple-600 shadow-2xl rounded"></div>
       </button>
 
-      {/* Solo renderizamos el menú si shouldRenderMenu es true */}
-      {shouldRenderMenu && (
-      <div className='absolute top-0'>
+      <div className='absolute top-0 bg-gradient-to-r from-cyan-500 to-purple-600 shadow-2xl'>
         <nav 
-          className={`menu-bar fixed w-64 h-full bg-gradient-to-r from-cyan-500 to-purple-600 text-white
+          className={`menu-bar fixed top-0 w-64 h-full bg-gradient-to-r from-cyan-500 to-purple-600 shadow-2xl text-white
                       flex flex-col items-center pt-10 transition-transform duration-300 
-                      ${isAnimating ? 'translate-x-0' : '-translate-x-full'}`}          
-          onMouseLeave={() => setIsOpen(false)}>
-
-  
-          
-          {/* Botón para cerrar el menú */}
-          <button 
-            onClick={() => setIsOpen(false)}
-            className="transition-transform duration-300 mb-5"
-          >
-            Cerrar
+                      ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}
+          onMouseLeave={closeMenu}  // Cierra el menu 
+      >
+      <button 
+          onClick={closeMenu}
+          className="mb-5">
+            cerrar
+          {/* Botón para cerrar el menú */}  
           </button>
 
           <a href="../" className="py-2 px-4">Inicio</a>
           <a href="../tiendas" className="py-2 px-4">Tiendas</a>
-          <a href="../contactanos" className="py-2 px-4">Contacto</a>
         </nav>
         </div>
-      )}
     </div>
   );
 }
