@@ -37,13 +37,13 @@ export default function ThreeBarMenu() {
       >
       <button 
           onClick={closeMenu}
-          className="mb-5">
+          className="m-5 text-lg">
             cerrar
           {/* Botón para cerrar el menú */}  
           </button>
 
-          <a href="../" className="py-2 px-4">Inicio</a>
-          <a href="../tiendas" className="py-2 px-4">Tiendas</a>
+          <a href="../" className="text-lg m-2">Inicio</a>
+          <a href="../tiendas" className="text-lg m-2">Tiendas</a>
         </nav>
         </div>
     </div>

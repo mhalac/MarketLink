@@ -26,7 +26,7 @@ export default function MenuRegister() {
                     <label className="text-3xl font-extrabold bg-gradient-to-r from-cyan-500 to-purple-600 bg-clip-text text-transparent leading-normal m-3" htmlFor="password">Password</label>
                     <input className="text-2xl bg-white text-black rounded-md m-3 shadow-2xl" name="password" id="password" type="password" />
 
-                    <button  className="bg-gradient-to-r from-cyan-500 to-purple-600 rounded text-2xl text-white m-3 w-40 shadow-2xl" type="submit">ENVIAR</button>
+                    <button  className="bg-gradient-to-r from-cyan-500 to-purple-600 rounded hover:to-cyan-500 text-2xl text-white m-3 w-40 shadow-2xl" type="submit">ENVIAR</button>
                     </form>
                 </div>
             </div>

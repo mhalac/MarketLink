@@ -1,6 +1,7 @@
 "use client"
 
 import { useRouter } from "next/navigation"
+import Image from "next/image"
 
 export default function Store_Item(props:any) {
     const router = useRouter()
@@ -10,10 +11,19 @@ export default function Store_Item(props:any) {
 
     return(
         
-        <button onClick={Pressed} className="bg-gradient-to-r from-cyan-500 to-purple-600 shadow-xl rounded-xl p-5 hover:bg-blue-600 flex flex-col min-h-[200px]">
+        <button onClick={Pressed} className="bg-gradient-to-r from-cyan-500 to-purple-600 hover:to-cyan-500 shadow-xl rounded-xl p-5 flex flex-col min-h-[200px]">
             <h1 className="text-center text-3xl w-[100%]">{props.title}</h1>
             <h1 className="text-center text-xl w-[100%]">{props.desc}</h1>
-
+                <div className="">
+                    <Image
+                        className=""
+                        src="/landing.jpg"
+                        alt=""
+                        layout=""
+                        width={100}
+                        height={50}
+                    ></Image>
+                </div>
         </button>
     )
 }
