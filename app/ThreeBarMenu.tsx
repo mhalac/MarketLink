@@ -29,9 +29,9 @@ export default function ThreeBarMenu() {
         onClick={toggleMenu} 
         className="p-4 text-white rounded-br"
       >
-        <div className="w-6 h-1 bg-purple-600 mb-1 rounded"></div>
-        <div className="w-6 h-1 bg-purple-600 mb-1 rounded"></div>
-        <div className="w-6 h-1 bg-purple-600 rounded"></div>
+        <div className="w-6 h-1 bg-gradient-to-r from-cyan-500 to-purple-600 mb-1 rounded"></div>
+        <div className="w-6 h-1 bg-gradient-to-r from-cyan-500 to-purple-600 mb-1 rounded"></div>
+        <div className="w-6 h-1 bg-gradient-to-r from-cyan-500 to-purple-600 rounded"></div>
       </button>
 
       {/* Solo renderizamos el menú si shouldRenderMenu es true */}

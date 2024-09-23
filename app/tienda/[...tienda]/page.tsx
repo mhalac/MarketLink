@@ -22,18 +22,18 @@ export default function Tienda({ params }: { params: { tienda: string } }) {
   
 
   return (
-    <div className="w-full h-screen flex flex-col items-center justify-center ">
-    <div className="bg-gradient-to-r from-cyan-500 to-purple-600 w-full h-screan fixed rounded-lg grid grid-rows-5 justify-center shadow-md p-10">
-    <div className="absolute left-0">
+    <div className="bg-slate-300 w-full h-screen flex flex-col items-center justify-center ">    
+      <div className="absolute left-0 top-0">
         <ThreeBarMenu/>
-        </div>
-      <h1 className="xl:text-8xl md:text-4xl col-span-3 text-center">
+      </div>
+    <div className="bg-gradient-to-r from-cyan-500 to-purple-600 w-full h-screan fixed rounded-lg grid grid-rows-5 justify-center shadow-md p-10">
+      <h1 className="text-white xl:text-8xl md:text-4xl col-span-3 text-center">
         {props.title}
       </h1>
-      <p className="text-3xl mt-10">
+      <p className="text-3xl text-white mt-10">
         {props.desc}
       </p>
     </div>
-    </div>
+  </div>
 );
 }
