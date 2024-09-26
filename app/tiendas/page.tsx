@@ -5,17 +5,19 @@ export default async function Dashboard() {
   return (
 
     <div className="w-full h-screen flex flex-col items-center justify-center ">
-        <div className="bg-slate-300 h-screen w-full flex flex-col justify-center items-center ">
+      <div className="bg-slate-300 h-screen w-full flex flex-col justify-center items-center ">
         <div className="absolute left-0 top-0">
-        <ThreeBarMenu/>
+          <ThreeBarMenu />
         </div>
-        <h1 className= "text-6xl bg-gradient-to-r from-cyan-500 to-purple-600 bg-clip-text text-transparent leading-normal">
-          Tiendas
-        </h1>
-          <div className="text-white flex flex-col justify-center items-center">
-            <Stores/>
+        <div className="bg-blue-400 w-[70%] h-[80%] flex flex-col ">
+          <h1 className="text-6xl w-full  h-fit text-center text-white">
+            Tiendas
+          </h1>
+          <div className="text-white">
+            <Stores />
           </div>
         </div>
-      </div> 
+      </div>
+    </div>
   );
 }
