@@ -18,7 +18,7 @@ export default function MenuRegister() {
                 <ThreeBarMenu/>
             </div>
             <div className="bg-slate-300 h-screen w-full flex flex-col justify-center items-center">
-                <div className="reactive flex flex-col justify-center rounded-lg">
+                <div className="bg-slate-200 w-[300px] h-[350px] reactive flex flex-col justify-center rounded-lg shadow-2xl">
                     <form onSubmit={Submit} className="flex flex-col items-center">
                         <label 
                             className="text-3xl font-extrabold bg-gradient-to-r from-cyan-500 to-purple-600 bg-clip-text text-transparent leading-normal" 
@@ -26,7 +26,7 @@ export default function MenuRegister() {
                             Usuario
                         </label>
                         <input 
-                            className="text-2xl bg-white text-black rounded-md shadow-2xl w-full" 
+                            className="w-[80%] text-2xl bg-white text-black rounded-md shadow-2xl " 
                             name="username" 
                             id="username" 
                             type="text" 
@@ -35,17 +35,17 @@ export default function MenuRegister() {
                         <label 
                             className="text-3xl font-extrabold bg-gradient-to-r mt-3 from-cyan-500 to-purple-600 bg-clip-text text-transparent leading-normal" 
                             htmlFor="password">
-                            Password
+                            contraseña
                         </label>
                         <input 
-                            className="text-2xl bg-white text-black rounded-md shadow-2xl w-full" 
+                            className="w-[80%] text-2xl bg-white text-black rounded-md shadow-2xl" 
                             name="password" 
                             id="password" 
                             type="password" 
                         />
 
                         <button 
-                            className="bg-gradient-to-r from-cyan-500 to-purple-600 rounded hover:to-cyan-500 text-2xl text-white m-6 w-40 shadow-2xl" 
+                            className="bg-gradient-to-r from-cyan-500 to-purple-600 rounded hover:to-cyan-500 text-2xl text-white m-6 w-[50%] shadow-2xl" 
                             type="submit">
                             ENVIAR
                         </button>
