@@ -6,19 +6,43 @@ const db = getDB();
 export async function GET() {
     const session = await getServerSession();
     const name = session?.user?.name;
+    if (!session || !session.user) {
+        return NextResponse.json({ status: "403", message: "Unauthorized" });
+    }
 
     const stmt_negocio = db.prepare(`
-    SELECT s.*, p.*, n.titulo AS negocio_titulo, n.desc AS negocio_desc, n.ubicacion AS negocio_ubi
-    FROM stock s
-    JOIN negocio n ON s.id_negocio = n.id_negocio
-    JOIN usuario u ON n.id_usuario = u.id_usuario
-    JOIN producto p ON s.id_producto = p.id_producto
-    WHERE u.username = ?;
-    `);
+        SELECT p.*, n.titulo AS negocio_titulo, n.desc AS negocio_desc, n.ubicacion AS negocio_ubi
+        FROM producto p
+        JOIN negocio n ON p.id_negocio = n.id_negocio
+        JOIN usuario u ON n.id_usuario = u.id_usuario
+        WHERE u.username = ?;
+        `);
+        
 
-    const final_result = stmt_negocio.get(name);
+    const final_result = stmt_negocio.all(name);
 
     console.log(final_result);
 
     return NextResponse.json({ status: "200", final_result });
+}
+export async function POST(req) {
+    const session = await getServerSession();
+
+    if (!session || !session.user) {
+        return NextResponse.json({ status: "403"});
+    }
+
+    const form = await req.formData();
+
+    const usuarioStmt = db.prepare("SELECT id_usuario FROM usuario WHERE username = ?");
+    const usuario = usuarioStmt.get(session.user.name);
+
+    const negocioStmt = db.prepare("SELECT id_negocio FROM negocio WHERE id_usuario = ?");
+    const negocio = negocioStmt.get(usuario.id_usuario);
+
+
+    const stmt = db.prepare("INSERT INTO producto(titulo, `desc`, id_negocio) VALUES(?, ?, ?)");
+    stmt.run(form.get("nombre"), form.get("desc"), negocio.id_negocio);
+
+    return NextResponse.json({ status: "200" });
 }
