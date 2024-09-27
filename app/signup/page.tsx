@@ -10,26 +10,48 @@ export default function MenuRegister() {
             method:"POST",
             body: formdata,
         })
-
     }
+
     return(            
         <div>
             <div className="absolute left-0 top-0">
-            <ThreeBarMenu/>
+                <ThreeBarMenu/>
             </div>
-        <div className="bg-slate-300 h-screen w-full flex flex-col justify-center items-center ">
-            <div className="reactive justify-center rounded-lg ">
-                <form onSubmit={Submit}>
-                    <label className="text-3xl font-extrabold bg-gradient-to-r from-cyan-500 to-purple-600 bg-clip-text text-transparent leading-normal m-3" htmlFor="username">Usuario</label>
-                    <input className="text-2xl bg-white text-black rounded-md m-3 shadow-2xl" name="username" id="username" type="text" />
+            <div className="bg-slate-300 h-screen w-full flex flex-col justify-center items-center">
+                <div className="reactive flex flex-col justify-center rounded-lg">
+                    <form onSubmit={Submit} className="flex flex-col items-center">
+                        <label 
+                            className="text-3xl font-extrabold bg-gradient-to-r from-cyan-500 to-purple-600 bg-clip-text text-transparent leading-normal" 
+                            htmlFor="username">
+                            Usuario
+                        </label>
+                        <input 
+                            className="text-2xl bg-white text-black rounded-md shadow-2xl w-full" 
+                            name="username" 
+                            id="username" 
+                            type="text" 
+                        />
 
-                    <label className="text-3xl font-extrabold bg-gradient-to-r from-cyan-500 to-purple-600 bg-clip-text text-transparent leading-normal m-3" htmlFor="password">Password</label>
-                    <input className="text-2xl bg-white text-black rounded-md m-3 shadow-2xl" name="password" id="password" type="password" />
+                        <label 
+                            className="text-3xl font-extrabold bg-gradient-to-r mt-3 from-cyan-500 to-purple-600 bg-clip-text text-transparent leading-normal" 
+                            htmlFor="password">
+                            Password
+                        </label>
+                        <input 
+                            className="text-2xl bg-white text-black rounded-md shadow-2xl w-full" 
+                            name="password" 
+                            id="password" 
+                            type="password" 
+                        />
 
-                    <button  className="bg-gradient-to-r from-cyan-500 to-purple-600 rounded hover:to-cyan-500 text-2xl text-white m-3 w-40 shadow-2xl" type="submit">ENVIAR</button>
+                        <button 
+                            className="bg-gradient-to-r from-cyan-500 to-purple-600 rounded hover:to-cyan-500 text-2xl text-white m-6 w-40 shadow-2xl" 
+                            type="submit">
+                            ENVIAR
+                        </button>
                     </form>
                 </div>
             </div>
         </div>
     )
-}    
+}
