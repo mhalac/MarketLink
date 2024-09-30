@@ -17,7 +17,7 @@ export default function LandingUI() {
 
   return (
     <div className="bg-slate-300 h-screen w-full flex flex-col justify-center items-center px-4 ">
-      <h1 className="text-6xl font-extrabold bg-gradient-to-r from-cyan-500 to-purple-600 bg-clip-text text-transparent leading-normal">
+      <h1 className="text-6xl font-extrabold bg-cyan-500 bg-clip-text text-transparent leading-normal">
         MarketLink
       </h1>
       <p className="text-lg md:text-2xl text-gray-700 text-center mb-8">
@@ -25,7 +25,7 @@ export default function LandingUI() {
       </p>
       <div className="w-full flex flex-col items-center">
         <button
-          className="bg-gradient-to-r from-cyan-500 to-purple-600 text-white py-2 px-6 rounded-lg transition-all duration-300 w-full max-w-[300px] text-center mb-4"
+          className="bg-cyan-500 text-white py-2 px-6 rounded-lg transition-all duration-300 w-full max-w-[300px] text-center mb-4"
           onClick={() => {
             signIn();
           }}
@@ -34,7 +34,7 @@ export default function LandingUI() {
         </button>
         <Link
           href="/signup/"
-          className="bg-gradient-to-r from-cyan-500 to-purple-600 text-white py-2 px-6 rounded-lg transition-all duration-300 w-full max-w-[300px] text-center mb-4"
+          className="bg-cyan-500 text-white py-2 px-6 rounded-lg transition-all duration-300 w-full max-w-[300px] text-center mb-4"
         >
           REGISTRARSE
         </Link>

@@ -23,14 +23,14 @@ export default function ThreeBarMenu() {
         onClick={openMenu} 
         className="p-4 text-white rounded-br"
       >
-        <div className="w-6 h-1 bg-gradient-to-r from-cyan-500 to-purple-600 shadow-2xl mb-1 rounded"></div>
-        <div className="w-6 h-1 bg-gradient-to-r from-cyan-500 to-purple-600 shadow-2xl mb-1 rounded"></div>
-        <div className="w-6 h-1 bg-gradient-to-r from-cyan-500 to-purple-600 shadow-2xl rounded"></div>
+        <div className="w-6 h-1 bg-cyan-600 shadow-2xl mb-1 rounded"></div>
+        <div className="w-6 h-1 bg-cyan-600 shadow-2xl mb-1 rounded"></div>
+        <div className="w-6 h-1 bg-cyan-600 shadow-2xl rounded"></div>
       </button>
 
-      <div className='absolute top-0 bg-gradient-to-r from-cyan-500 to-purple-600 shadow-2xl'>
+      <div className='absolute top-0 bg-cyan-600 shadow-2xl'>
         <nav 
-          className={`menu-bar fixed top-0 w-64 h-full bg-gradient-to-r from-cyan-500 to-purple-600 shadow-2xl text-white
+          className={`menu-bar fixed top-0 w-64 h-full bg-cyan-600 shadow-2xl text-white
                       flex flex-col items-center pt-10 transition-transform duration-300 
                       ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}
           onMouseLeave={closeMenu}  // Cierra el menu 
@@ -44,6 +44,7 @@ export default function ThreeBarMenu() {
 
           <a href="../" className="text-lg m-2">Inicio</a>
           <a href="../tiendas" className="text-lg m-2">Tiendas</a>
+          <a href='../contactanos' className= "text-lg m-2">contactanos</a>
         </nav>
         </div>
     </div>

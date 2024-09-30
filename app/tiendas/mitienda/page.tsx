@@ -33,7 +33,7 @@ export default function MiTienda() {
       console.log(mis_productos)
 
       cambiarTienda(
-        <div className="bg-gradient-to-r translate-y-2 from-cyan-500 to-purple-600 w-[75%] h-[85%] fixed rounded-lg grid grid-rows-1 grid-cols-3  shadow-md p-10">
+        <div className=" from-cyan-500 w-[75%] h-[85%] fixed rounded-lg grid grid-rows-1 grid-cols-3  shadow-md p-10">
           <div className=" w-[20vw] h-[70vh]">
             <form onSubmit={crear_producto} className="grid grid-cols-2 grid-rows-12">
               <h1 className="text-4xl  row-span-2 col-span-2 text-center">Registrar Producto</h1>

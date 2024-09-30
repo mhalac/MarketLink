@@ -21,7 +21,7 @@ export default function MenuRegister() {
                 <div className="bg-slate-200 w-[300px] h-[350px] reactive flex flex-col justify-center rounded-lg shadow-2xl">
                     <form onSubmit={Submit} className="flex flex-col items-center">
                         <label 
-                            className="text-3xl font-extrabold bg-gradient-to-r from-cyan-500 to-purple-600 bg-clip-text text-transparent leading-normal" 
+                            className="text-3xl font-extrabold bg-cyan-500 bg-clip-text text-transparent leading-normal" 
                             htmlFor="username">
                             Usuario
                         </label>
@@ -33,9 +33,9 @@ export default function MenuRegister() {
                         />
 
                         <label 
-                            className="text-3xl font-extrabold bg-gradient-to-r mt-3 from-cyan-500 to-purple-600 bg-clip-text text-transparent leading-normal" 
+                            className="text-3xl font-extrabold bg-cyan-500 bg-clip-text text-transparent leading-normal" 
                             htmlFor="password">
-                            contraseña
+                            Contraseña
                         </label>
                         <input 
                             className="w-[80%] text-2xl bg-white text-black rounded-md shadow-2xl" 
@@ -45,7 +45,7 @@ export default function MenuRegister() {
                         />
 
                         <button 
-                            className="bg-gradient-to-r from-cyan-500 to-purple-600 rounded hover:to-cyan-500 text-2xl text-white m-6 w-[50%] shadow-2xl" 
+                            className="bg-cyan-500 rounded hover:bg-cyan-600 hover:shadow-md text-2xl text-white m-6 w-[50%] shadow-2xl" 
                             type="submit">
                             ENVIAR
                         </button>

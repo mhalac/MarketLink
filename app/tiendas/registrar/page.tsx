@@ -21,7 +21,7 @@ export default function Registrar() {
   }
 
   return (
-    <div className="bg-gradient-to-r from-cyan-500 to-purple-600 w-full h-screen fixed rounded-lg grid grid-rows-5 justify-center shadow-md p-10">
+    <div className="bg-cyan-500 w-full h-screen fixed rounded-lg grid grid-rows-5 justify-center shadow-md p-10">
       <div className="absolute left-0">
         <ThreeBarMenu/>
       </div>
@@ -39,7 +39,7 @@ export default function Registrar() {
         <input type="text" className="w-full p-3 rounded-lg text-black" id="ubic" name="ubic" required/>
 
         <div className="col-span-2 flex justify-center mt-10">
-          <button className="w-1/2 p-3 rounded-full bg-gradient-to-r from-purple-600 to-cyan-500 text-3xl font-bold hover:bg-gradient-to-r hover:from-cyan-500 hover:to-purple-600 transition-colors duration-300" type="submit">
+          <button className="w-1/2 p-3 rounded-full bg-cyan-500 text-3xl font-bold hover:bg-gradient-to-r hover:from-cyan-500 hover:to-purple-600 transition-colors duration-300" type="submit">
             {status}
           </button>
         </div>

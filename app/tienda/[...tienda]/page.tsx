@@ -26,7 +26,7 @@ export default function Tienda({ params }: { params: { tienda: string } }) {
       <div className="absolute left-0 top-0">
         <ThreeBarMenu/>
       </div>
-    <div className="w-[90%] h-[80%] bg-gradient-to-r from-cyan-500 to-purple-600 fixed rounded-lg grid grid-rows-5 justify-center shadow-md p-10">
+    <div className="w-[90%] h-[80%] bg-cyan-500 fixed rounded-lg grid grid-rows-5 justify-center shadow-md p-10">
       <h1 className="text-white xl:text-8xl md:text-4xl col-span-3 text-center">
         {props.title}
       </h1>

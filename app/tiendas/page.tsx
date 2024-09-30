@@ -9,8 +9,8 @@ export default async function Dashboard() {
         <div className="absolute left-0 top-0">
           <ThreeBarMenu />
         </div>
-        <div className="bg-blue-400 w-[70%] h-[80%] flex flex-col ">
-          <h1 className="text-6xl w-full  h-fit text-center text-white">
+        <div className="bg-cyan-500 shadow-2xl w-[70%] h-[80%] rounded-xl flex flex-col ">
+          <h1 className="text-6xl w-full h-fit text-center text-white">
             Tiendas
           </h1>
           <div className="text-white">
