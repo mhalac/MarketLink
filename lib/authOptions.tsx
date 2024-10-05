@@ -5,7 +5,16 @@ import Credentials from "next-auth/providers/credentials";
 const bcrypt = require("bcrypt");
 
 import { GetRole } from "@/app/api/db/functions";
-
+declare module "next-auth" {
+  interface Session {
+    user: {
+      id: any;
+      name?: any ;
+      email?: string ;
+      rol?: any;
+    };
+  }
+}
 const db = getDB();
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -40,13 +49,11 @@ export const authOptions: NextAuthOptions = {
   callbacks: {
     jwt({ token, user }) {
       if (user) {
-        // User is available during sign-in
         token.id = user.id;
       }
       return token;
     },
     session({ session, token }) {
-      //@ts-ignore
       session.user.id = token.id;
       session.user.rol = GetRole(session.user?.name);
       return session;
