@@ -52,6 +52,10 @@ export default function ThreeBarMenu() {
           </button>
 
           <button className="mb-5 border-2 border-cyan-500 rounded-full w-[70%]">
+            <a href='../tiendas/mitienda' className="text-2xl m-2 font-extrabold bg-cyan-500 bg-clip-text text-transparent leading-normal">Mi Tienda</a>
+          </button>
+
+          <button className="mb-5 border-2 border-cyan-500 rounded-full w-[70%]">
             <a href='../contactanos' className="text-2xl m-2 font-extrabold bg-cyan-500 bg-clip-text text-transparent leading-normal">contactanos</a>
           </button>
         </nav>
