@@ -18,6 +18,7 @@ export default function MiTienda() {
   }
   async function agregar_producto(e: any) {
   }
+
   async function RequestStoreData() {
     const datos = await fetch("/api/mitienda", {
       method: "GET",
@@ -64,14 +65,10 @@ export default function MiTienda() {
               </thead>
               <tbody className="overflow-scroll">
                 {mis_productos.map((value: any, index: any) => (
-
                   <tr key={index} className="odd:bg-slate-600 hover:cursor-pointer  even:bg-slate-400" data-id={value.id_producto} onDoubleClick={agregar_producto}>
-
                     <td className="py-2">{value.titulo}</td>
                     <td className="py-2">{value.desc}</td>
-
                   </tr>
-
                 ))}
               </tbody>
             </table>
