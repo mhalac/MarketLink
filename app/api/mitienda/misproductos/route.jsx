@@ -17,7 +17,7 @@ export async function GET() {
         JOIN usuario u ON n.id_usuario = u.id_usuario
         WHERE u.username = ?;
         `);
-        
+
 
     const final_result = stmt_negocio.all(name);
 
@@ -28,7 +28,7 @@ export async function POST(req) {
     const session = await getServerSession();
 
     if (!session || !session.user) {
-        return NextResponse.json({ status: "403"});
+        return NextResponse.json({ status: "403" });
     }
 
     const form = await req.formData();

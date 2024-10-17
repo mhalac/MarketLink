@@ -16,7 +16,7 @@ export default function MiTienda() {
 
     await RequestStoreData();
   }
-  async function agregar_producto(e:any) {
+  async function agregar_producto(e: any) {
   }
   async function RequestStoreData() {
     const datos = await fetch("/api/mitienda", {
@@ -89,13 +89,13 @@ export default function MiTienda() {
             </thead>
             <tbody className="overflow-scroll">
               {mi_stock.map((value: any, index: any) => {
-               return(
-                <tr key={index} className="odd:bg-slate-600 even:bg-slate-400" data-id={value.id_producto}>
-                <td>{value.titulo}</td>
-                <td><input type="number" className="m-4 text-black"/></td>
-                <td>{value.desc}</td>
-              </tr>
-               )
+                return (
+                  <tr key={index} className="odd:bg-slate-600 even:bg-slate-400" data-id={value.id_producto}>
+                    <td>{value.titulo}</td>
+                    <td><input type="number" className="m-4 text-black" /></td>
+                    <td>{value.desc}</td>
+                  </tr>
+                )
               })}
 
 

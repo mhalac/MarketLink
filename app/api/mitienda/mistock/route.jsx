@@ -16,7 +16,7 @@ export async function GET() {
         JOIN producto p ON p.id_producto = s.id_producto
         WHERE s.id_negocio = (SELECT id_negocio FROM negocio WHERE id_usuario = (SELECT id_usuario FROM usuario WHERE username = ?))
         `);
-    
+
     const final_result = stmt_stock.all(user);
 
     return NextResponse.json({ status: "200", final_result });
@@ -25,7 +25,7 @@ export async function POST(req) {
     const session = await getServerSession();
 
     if (!session || !session.user) {
-        return NextResponse.json({ status: "403"});
+        return NextResponse.json({ status: "403" });
     }
 
     const form = await req.formData();
