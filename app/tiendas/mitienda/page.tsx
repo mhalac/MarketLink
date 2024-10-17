@@ -1,11 +1,9 @@
 "use client";
 import { useRouter } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 export default function MiTienda() {
   const [tienda, cambiarTienda] = useState<React.JSX.Element>();
-  const router = useRouter();
-
   async function crear_producto(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
@@ -18,9 +16,7 @@ export default function MiTienda() {
 
     await RequestStoreData();
   }
-
-  async function agregar_producto(event: any) {
-
+  async function agregar_producto(e:any) {
   }
   async function RequestStoreData() {
     const datos = await fetch("/api/mitienda", {
@@ -66,7 +62,7 @@ export default function MiTienda() {
                   <th className="px-4 py-2">Descripcion</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody className="overflow-scroll">
                 {mis_productos.map((value: any, index: any) => (
 
                   <tr key={index} className="odd:bg-slate-600 hover:cursor-pointer  even:bg-slate-400" data-id={value.id_producto} onDoubleClick={agregar_producto}>
@@ -83,18 +79,30 @@ export default function MiTienda() {
         </div>
 
         <div className="w-[20vw] h-[70vh]">
-          <table className="table-auto text-left bg-gray-800 border-separate border-spacing-4 w-full rounded-lg shadow-lg">
+          <table className="table-auto text-left bg-gray-800 border-separate border-spacing-1 w-full rounded-lg shadow-lg">
             <thead>
-              <tr className="bg-purple-600 text-white">
+              <tr className="bg-slate-500 text-white">
                 <th className="text-xl px-4 py-2 border-b">Producto</th>
                 <th className="text-xl px-4 py-2 border-b">Cantidad</th>
                 <th className="text-xl px-4 py-2 border-b">Descripcion</th>
               </tr>
             </thead>
-            <tbody></tbody>
+            <tbody className="overflow-scroll">
+              {mi_stock.map((value: any, index: any) => {
+               return(
+                <tr key={index} className="odd:bg-slate-600 even:bg-slate-400" data-id={value.id_producto}>
+                <td>{value.titulo}</td>
+                <td><input type="number" className="m-4 text-black"/></td>
+                <td>{value.desc}</td>
+              </tr>
+               )
+              })}
+
+
+            </tbody>
           </table>
         </div>
-x
+
 
       </div>
     );

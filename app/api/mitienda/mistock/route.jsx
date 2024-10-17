@@ -5,22 +5,19 @@ const db = getDB();
 
 export async function GET() {
     const session = await getServerSession();
-    console.log(session)
-    const id = session?.user?.id;
+    const user = session?.user.name;
+
     if (!session || !session.user) {
         return NextResponse.json({ status: "403", message: "Unauthorized" });
     }
-    console.log(id)
     const stmt_stock = db.prepare(`
-        SELECT p.titulo, p.desc, s.cantidad
-        FROM producto p
-        JOIN stock s ON s.id_producto = p.id_producto
-        JOIN negocio n ON n.id_usuario = ?
+        SELECT s.cantidad, p.titulo, p.desc
+        FROM stock s
+        JOIN producto p ON p.id_producto = s.id_producto
+        WHERE s.id_negocio = (SELECT id_negocio FROM negocio WHERE id_usuario = (SELECT id_usuario FROM usuario WHERE username = ?))
         `);
     
-    const final_result = stmt_stock.all(id);
-    console.log(id)
-    console.log(final_result)
+    const final_result = stmt_stock.all(user);
 
     return NextResponse.json({ status: "200", final_result });
 }
