@@ -1,6 +1,8 @@
 "use client";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useRef, useState } from "react";
+import ThreeBarMenu from "@/app/ThreeBarMenu";
+import Perfil from "@/app/perfil";
 
 export default function MiTienda() {
   const [tienda, cambiarTienda] = useState<React.JSX.Element>();
@@ -39,8 +41,10 @@ export default function MiTienda() {
       <div className=" bg-slate-500 w-[75%] h-[85%] fixed rounded-lg grid grid-rows-2 grid-cols-3 shadow-md p-10">
         <div className=" w-[20vw] h-[70vh]">
           <form onSubmit={crear_producto} className="grid bg-slate-600 p-10 shadow-2xl rounded-2xl grid-cols-2 grid-rows-12">
+
             <h1 className="text-4xl row-span-2 col-span-2 text-center">Registrar Producto</h1>
             <div className="col-span-2 row-span-2"></div>
+
             <label htmlFor="nombre">Nombre del Producto: </label>
             <input type="text" className="text-black" name="nombre" id="nombre" required />
             <div className="col-span-2 row-span-2"></div>
@@ -87,11 +91,17 @@ export default function MiTienda() {
             <tbody className="overflow-scroll">
               {mi_stock.map((value: any, index: any) => {
                 return (
-                  <tr key={index} className="odd:bg-slate-600 even:bg-slate-400" data-id={value.id_producto}>
-                    <td>{value.titulo}</td>
-                    <td><input type="number" className="m-4 text-black" /></td>
-                    <td>{value.desc}</td>
-                  </tr>
+                  <div className="w-full h-screen">
+                    <div className="z-50">
+                      <ThreeBarMenu></ThreeBarMenu>
+                      <Perfil></Perfil>
+                    </div>
+                    <tr key={index} className="odd:bg-slate-600 even:bg-slate-400" data-id={value.id_producto}>
+                      <td>{value.titulo}</td>
+                      <td><input type="number" className="m-4 text-black" /></td>
+                      <td>{value.desc}</td>
+                    </tr>
+                  </div>
                 )
               })}
 
