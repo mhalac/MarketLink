@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 
 export default function ThreeBarMenu() {
   const [isOpen, setIsOpen] = useState(false);
+  const [rol, setRol] = useState(1);
+
 
   const openMenu = () => {
     setIsOpen(true);
@@ -11,6 +13,29 @@ export default function ThreeBarMenu() {
   const closeMenu = () => {
     setIsOpen(false);
   };
+
+  const cambiarcuenta = async () =>{
+   const nrol = rol === 1 ? 2 : 1;
+   setRol(nrol); 
+
+  try {
+    const response = await fetch('../app/api/rolUpdate/route.js', {
+      method:'post',
+      headers:{
+        'content-type':'application/json'
+      },
+      body: JSON.stringify({ nrol }),
+    })
+    if (response.ok) {
+      console.log('Rol cambiado exitosamente');
+    } else {
+      console.error('Error al cambiar el rol');
+    }
+  } catch (error) {
+    console.error('Error en la petición:', error);
+  }
+};
+
   return (
     <div className="relative z-50 ">
 
@@ -23,14 +48,14 @@ export default function ThreeBarMenu() {
         onClick={openMenu}
         className="p-4 text-white rounded-br"
       >
-        <div className="w-6 h-1 bg-cyan-600 shadow-2xl mb-1 rounded"></div>
-        <div className="w-6 h-1 bg-cyan-600 shadow-2xl mb-1 rounded"></div>
-        <div className="w-6 h-1 bg-cyan-600 shadow-2xl rounded"></div>
+        <div className="w-6 h-1 bg-cyan-600 shadow-xl mb-1 rounded"></div>
+        <div className="w-6 h-1 bg-cyan-600 shadow-xl mb-1 rounded"></div>
+        <div className="w-6 h-1 bg-cyan-600 shadow-xl rounded"></div>
       </button>
 
-      <div className='absolute top-0 bg-cyan-600 shadow-2xl'>
+      <div className='absolute top-0 bg-cyan-600 shadow-xl'>
         <nav
-          className={`menu-bar fixed top-0 w-64 h-full bg-slate-200 shadow-2xl text-white
+          className={`menu-bar fixed top-0 w-64 h-full bg-slate-200 shadow-xl text-white
                       flex flex-col items-center pt-10 transition-transform duration-300 
                       ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}
           onMouseLeave={closeMenu}  // Cierra el menu 
@@ -38,25 +63,31 @@ export default function ThreeBarMenu() {
           <button
             onClick={closeMenu}
             className="mb-5 text-lg border-2 border-cyan-500 rounded-full w-[70%]">
-            <a className="text-2xl m-2 font-extrabold bg-cyan-500 bg-clip-text text-transparent leading-normal">Cerrar</a>
+            <a className="text-xl m-2 font-extrabold bg-cyan-500 bg-clip-text text-transparent leading-normal">Cerrar</a>
             {/* Botón para cerrar el menú */}
           </button>
 
 
           <button className="mb-5 text-lg border-2 border-cyan-500 rounded-full w-[70%]">
-            <a href="../" className="text-2xl m-2 font-extrabold bg-cyan-500 bg-clip-text text-transparent leading-normal">Inicio</a>
+            <a href="../" className="text-xl m-2 font-extrabold bg-cyan-500 bg-clip-text text-transparent leading-normal">Inicio</a>
           </button>
 
           <button className="mb-5 border-2 border-cyan-500 rounded-full w-[70%]">
-            <a href="../tiendas" className="text-2xl m-2 font-extrabold bg-cyan-500 bg-clip-text text-transparent leading-normal">Tiendas</a>
+            <a href="../tiendas" className="text-xl m-2 font-extrabold bg-cyan-500 bg-clip-text text-transparent leading-normal">Tiendas</a>
+          </button>
+
+          <button onClick={cambiarcuenta} className="mb-5 border-2 border-cyan-500 rounded-full w-[70%]">
+            
+            <a href='../tiendas/registrar' className="text-xl m-2 font-extrabold bg-cyan-500 bg-clip-text text-transparent leading-normal">cambiar cuenta</a>
+          </button>
+
+
+          <button className="mb-5 border-2 border-cyan-500 rounded-full w-[70%]">
+            <a href='../tiendas/mitienda' className="text-xl m-2 font-extrabold bg-cyan-500 bg-clip-text text-transparent leading-normal">Mi Tienda</a>
           </button>
 
           <button className="mb-5 border-2 border-cyan-500 rounded-full w-[70%]">
-            <a href='../tiendas/mitienda' className="text-2xl m-2 font-extrabold bg-cyan-500 bg-clip-text text-transparent leading-normal">Mi Tienda</a>
-          </button>
-
-          <button className="mb-5 border-2 border-cyan-500 rounded-full w-[70%]">
-            <a href='../contactanos' className="text-2xl m-2 font-extrabold bg-cyan-500 bg-clip-text text-transparent leading-normal">contactanos</a>
+            <a href='../contactanos' className="text-xl m-2 font-extrabold bg-cyan-500 bg-clip-text text-transparent leading-normal">contactanos</a>
           </button>
         </nav>
       </div>
