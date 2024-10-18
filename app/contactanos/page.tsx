@@ -6,12 +6,12 @@ import ThreeBarMenu from '../ThreeBarMenu';
 
 export default function Contact() {
   return (
-    <div className="min-h-screen bg-slate-300 flex flex-col items-center justify-start py-10 px-4 relative">
+    <div className="overflow-hidden h-screen bg-slate-300 flex flex-col items-center justify-start relative">
       <div className='absolute left-0 top-0'><ThreeBarMenu/></div>
 
     {/*Información de contacto*/}                                                                             
-      <div className="bg-white p-6 rounded-lg shadow-2xl mb-8 w-full max-w-md translate-y-24">
-        <h2 className="text-2xl font-semibold mb-4 text-black">Información de Contacto</h2>
+      <div className="bg-white p-2 rounded-lg shadow-2xl mb-8 w-full max-w-md translate-y-24 ">
+        <h2 className="text-2xl font-semibold mb-4 text-black">Información d Contacto</h2>
         <p className="mb-2">
           <strong className="text-black">Email: contacto@ejemplo.com</strong> 
         </p>
@@ -50,7 +50,7 @@ export default function Contact() {
           {/*para enviar*/}
           <button
             type="submit"
-            className="bg-my-blue text-white py-2 px-4 rounded-md hover:bg-blue-900">
+            className="bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-900">
             Enviar
           </button>
         </form>
