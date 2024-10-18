@@ -18,17 +18,17 @@ export default function ThreeBarMenu() {
   const cambiarcuenta = async () =>{
    const nrol = rol === 1 ? 2 : 1;
    setRol(nrol); 
-
-  try {
-    const response = await fetch('../app/api/rolUpdate/route.js', {
-      method:'post',
-      headers:{
-        'content-type':'application/json'
+   
+   try {
+    const response = await fetch('/api/rolUpdate', { // Cambia a ruta absoluta
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify({ nrol }),
-    })
+    });
     if (response.ok) {
-      console.log('Rol se cambio');
+      console.log('Rol se cambió');
     } else {
       console.error('Error al cambiar el rol');
     }
