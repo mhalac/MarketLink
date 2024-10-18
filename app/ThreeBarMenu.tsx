@@ -6,7 +6,7 @@ export default function ThreeBarMenu() {
   const [isOpen, setIsOpen] = useState(false);
   const [rol, setRol] = useState(1);
   const { data: session, status } = useSession();
-
+  console.log(session)
   const openMenu = () => {
     setIsOpen(true);
   };
@@ -74,9 +74,12 @@ export default function ThreeBarMenu() {
             <a href='../tiendas/registrar' className="text-xl m-2 font-extrabold bg-cyan-500 bg-clip-text text-transparent leading-normal">Añadir Negocio</a>
           </button>
 
-          <button className="mb-5 border-2 border-cyan-500 rounded-full w-[70%]">
+         {session?.user.rol === 2 ? ( <button className="mb-5 border-2 border-cyan-500 rounded-full w-[70%]">
             <a href='../tiendas/mitienda' className="text-xl m-2 font-extrabold bg-cyan-500 bg-clip-text text-transparent leading-normal">Mi Tienda</a>
-          </button>
+          </button>):(
+            <>
+            </>
+)}
 
           <button className="mb-5 border-2 border-cyan-500 rounded-full w-[70%]">
             <a href='../contactanos' className="text-xl m-2 font-extrabold bg-cyan-500 bg-clip-text text-transparent leading-normal">Contactanos</a>
