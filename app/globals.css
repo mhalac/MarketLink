@@ -7,7 +7,9 @@
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
 }
-@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital@0;1&family=Oswald:wght@200..700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');@media (prefers-color-scheme: dark) {
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital@0;1&family=Oswald:wght@200..700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+@media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 255, 255, 255;
@@ -19,9 +21,10 @@ body {
   color: rgb(var(--foreground-rgb));
 
 }
+
 @layer utilities {
 
-  .background-landing{
+  .background-landing {
     background-image: url("/landing.jpg");
   }
 
@@ -31,11 +34,25 @@ body {
     font-weight: 500;
     font-style: normal;
   }
+
   .oswald-medium {
     font-family: "Ubuntu", sans-serif;
     font-weight: 600;
     font-style: normal;
   }
-  
 
+
+}
+
+.scrollbar-hidden {
+  overflow: auto;
+}
+
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hidden {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }

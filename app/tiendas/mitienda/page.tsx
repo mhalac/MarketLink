@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import ThreeBarMenu from "@/app/ThreeBarMenu";
 
 export default function MiTienda() {
   const [misProductos, setMisProductos] = useState<any[]>([]);
@@ -82,31 +83,34 @@ export default function MiTienda() {
   }, []);
 
   return (
-    <div className="bg-slate-500 w-[75%] h-[85%] fixed rounded-lg grid grid-rows-2 grid-cols-3 shadow-md p-10">
-      <div className="w-[20vw] h-[70vh]">
+    <div className="bg-slate-300 w-[100%] h-[100%] fixed rounded-lg grid grid-rows-2 grid-cols-3 shadow-md p-10">
+      <div className="absolute left-0 top-0">
+        <ThreeBarMenu />
+      </div>
+      <div className="w-[30vw] h-[90vh] p-2">
         <form
           onSubmit={crear_producto}
-          className="grid bg-slate-600 p-10 shadow-2xl rounded-2xl grid-cols-2 grid-rows-12"
+          className="grid bg-cyan-600 p-10 shadow-2xl rounded-2xl grid-cols-2 grid-rows-12"
         >
-          <h1 className="text-4xl row-span-2 col-span-2 text-center">
-            Registrar Producto
+          <h1 className="text-5xl m-2 font-extrabold row-span-2 col-span-2 text-center">
+            <a className="">Registrar Producto</a>
           </h1>
           <div className="col-span-2 row-span-2"></div>
 
-          <label htmlFor="nombre">Nombre del Producto: </label>
+          <label htmlFor="nombre" className="text-lg m-2 font-extrabold">Nombre del Producto: </label>
           <input
             type="text"
-            className="text-black"
+            className="text-black rounded-md shadow-2xl"
             name="nombre"
             id="nombre"
             required
           />
           <div className="col-span-2 row-span-2"></div>
 
-          <label htmlFor="desc">Descripcion: </label>
+          <label htmlFor="desc" className="text-lg m-2 font-extrabold">Descripcion: </label>
           <input
             type="text"
-            className="text-black"
+            className="text-black rounded-md shadow-2xl"
             name="desc"
             id="desc"
             required
@@ -115,27 +119,31 @@ export default function MiTienda() {
 
           <button
             type="submit"
-            className="row-span-2 col-span-2 outline hover:bg-slate-600 bg-slate-500 rounded-md shadow-2xl mx-10"
+            className="row-span-2 col-span-2 outline bg-cyan-600 hover:bg-cyan-700 rounded-md shadow-2xl mx-10 text-lg m-2 font-extrabold"
           >
             Registrar!
           </button>
         </form>
       </div>
 
-      <div className="w-[20vw] h-[70vh] rounded-2xl flex justify-center overflow-auto">
-        <div className="w-full max-h-full overflow-auto">
-          <table className="table-fixed text-center bg-gray-800 border-separate w-full rounded-lg shadow-lg">
+      <div className="w-[30vw] h-[90vh] rounded-2xl flex flex-col justify-center p-2">
+        <div className="w-full max-h-full overflow-hidden ">
+          <table className="table-fixed text-center bg-cyan-500 border-separate w-full rounded-t-lg shadow-2xl">
             <thead>
               <tr>
-                <th className="px-4 py-2">Nombre</th>
-                <th className="px-4 py-2">Descripcion</th>
+                <th className="px-4 py-2 text-4xl font-extrabold">Nombre</th>
+                <th className="px-4 py-2 text-4xl font-extrabold">Descripcion</th>
               </tr>
             </thead>
-            <tbody className="overflow-scroll">
+          </table>
+        </div>
+        <div className="w-[29vw] max-h-full scrollbar-hidden overflow-auto">
+          <table className="table-fixed text-center bg-cyan-500 border-separate w-full rounded-b-lg shadow-2xl">
+            <tbody className="">
               {misProductos && misProductos.length > 0 && misProductos.map((value: any, index: any) => (
                 <tr
                   key={index}
-                  className="odd:bg-slate-600 hover:cursor-pointer even:bg-slate-400"
+                  className="odd:bg-cyan-900 hover:cursor-pointer hover:bg-cyan-700 even:bg-teal-600"
                   data-id_producto={value.id_producto}
                   onDoubleClick={agregar_producto}
                 >
@@ -143,22 +151,21 @@ export default function MiTienda() {
                   <td className="py-2">{value.desc}</td>
                 </tr>
               ))}
-
             </tbody>
           </table>
         </div>
       </div>
 
-      <div className="w-[20vw] h-[70vh]">
-        <table className="table-auto text-left bg-gray-800 border-separate border-spacing-1 w-full rounded-lg shadow-lg">
+      <div className="w-[34vw] h-[90vh] p-2">
+        <table className="table-auto text-left bg-cyan-500 border-separate border-spacing-1 w-full rounded-lg shadow-lg">
           <thead>
-            <tr className="bg-slate-500 text-white">
-              <th className="text-xl px-4 py-2 border-b">Producto</th>
-              <th className="text-xl px-4 py-2 border-b">Cantidad</th>
-              <th className="text-xl px-4 py-2 border-b">Descripcion</th>
+            <tr className="bg-cyan-700 text-white font-extrabold">
+              <th className="text-xl px-4 py-2 border-b text-center">Producto</th>
+              <th className="text-xl px-4 py-2 border-b text-center">Cantidad</th>
+              <th className="text-xl px-4 py-2 border-b text-center">Descripcion</th>
             </tr>
           </thead>
-          <tbody className="overflow-scroll">
+          <tbody className="overflow-scroll text-center">
             {displayStock && displayStock.length > 0 && displayStock.map((item: any, index: any) => (
               <tr data-id_producto={item.id_producto} key={index}>
                 <td>{item.titulo}</td>
@@ -167,7 +174,7 @@ export default function MiTienda() {
                     type="number"
                     value={item.cantidad}
                     onChange={(e) => actualizarNumero(index, e.target.value)}
-                    className="bg-slate-950 w-16 text-center"
+                    className="bg-cyan-700 w-16 text-center font-extrabold"
                     min="0"
                   />
                 </td>
@@ -177,10 +184,10 @@ export default function MiTienda() {
           </tbody>
 
         </table>
-        <div className="w-full flex justify-center items-center h-fit">
+        <div className="w-full flex justify-center items-center h-fit p-2">
           <button
             onClick={enviar}
-            className="bg-blue-400 py-5 px-10 rounded-xl mt-5"
+            className="bg-cyan-500 py-5 px-10 rounded-xl mt-5 font-extrabold text-center"
           >
             Enviar
           </button>
