@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 export default function MiTienda() {
   const [misProductos, setMisProductos] = useState<any[]>([]);
@@ -18,42 +18,64 @@ export default function MiTienda() {
     await RequestStoreData();
   }
 
-  async function agregar_producto(e: React.MouseEvent<HTMLTableRowElement>) {
-    const new_array = [...displayStock]; // Spread to create a new array, since displayStock seems to be an array
-  
-    // Get all the <td> elements in the clicked row
+  async function agregar_producto(e: any) {
+    const new_array = [...displayStock];
     const tds = e.currentTarget.querySelectorAll("td");
-  
-    if (tds.length > 0) {
-      const item = {
-        titulo: tds[0].textContent || "",  // First <td> value
-        cantidad: "1",                     // Set default or retrieve this if needed
-        desc: tds[1].textContent || "",    // Second <td> value
-      };
-  
-      // Add the new item to the array
-      new_array.push(item);
-  
-      // Update the displayStock state
-      setDisplayStock(new_array);
+    const productId = Number(e.currentTarget.dataset.id_producto);
+    if (new_array.find((item) => item.id_producto === productId)) {
+      return;
+    }
+    const item = {
+      titulo: tds[0].textContent || "",
+      cantidad: 1,
+      desc: tds[1].textContent || "",
+      id_producto: productId,
+    };
+
+    new_array.push(item);
+
+    setDisplayStock(new_array);
+  }
+
+  async function RequestStoreData() {
+    const productos = await fetch("/api/mitienda/misproductos", {
+      method: "GET",
+    });
+    const stock = await fetch("/api/mitienda/mistock", {
+      method: "GET",
+    });
+
+    const misProductosData = (await productos.json()).final_result;
+    const localStockData = (await stock.json()).final_result;
+
+    setMisProductos(misProductosData);
+    setDisplayStock(localStockData);
+  }
+
+  async function enviar() {
+    const response = await fetch("/api/mitienda/mistock", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(displayStock),
+    });
+
+    if (response.ok) {
+      alert("Stock actualizado correctamente");
+      await RequestStoreData();
+    } else {
+      const errorData = await response.json();
+      alert(`Error: ${errorData.message}`);
     }
   }
-  
-  async function RequestStoreData() {
-      const productos = await fetch("/api/mitienda/misproductos", {
-        method: "GET",
-      });
-      const stock = await fetch("/api/mitienda/mistock", {
-        method: "GET",
-      });
 
-      const misProductosData = (await productos.json()).final_result;
-      const localStockData = (await stock.json()).final_result;
-
-      setMisProductos(misProductosData);
-      setDisplayStock(localStockData);
-
-  }
+  const actualizarNumero = (index: number, value: string) => {
+    const newStock = [...displayStock];
+    const cantidadNum = Number(value);
+    if (!isNaN(cantidadNum) && cantidadNum >= 0) {
+      newStock[index].cantidad = cantidadNum;
+      setDisplayStock(newStock);
+    }
+  };
 
   useEffect(() => {
     RequestStoreData();
@@ -62,19 +84,39 @@ export default function MiTienda() {
   return (
     <div className="bg-slate-500 w-[75%] h-[85%] fixed rounded-lg grid grid-rows-2 grid-cols-3 shadow-md p-10">
       <div className="w-[20vw] h-[70vh]">
-        <form onSubmit={crear_producto} className="grid bg-slate-600 p-10 shadow-2xl rounded-2xl grid-cols-2 grid-rows-12">
-          <h1 className="text-4xl row-span-2 col-span-2 text-center">Registrar Producto</h1>
+        <form
+          onSubmit={crear_producto}
+          className="grid bg-slate-600 p-10 shadow-2xl rounded-2xl grid-cols-2 grid-rows-12"
+        >
+          <h1 className="text-4xl row-span-2 col-span-2 text-center">
+            Registrar Producto
+          </h1>
           <div className="col-span-2 row-span-2"></div>
 
           <label htmlFor="nombre">Nombre del Producto: </label>
-          <input type="text" className="text-black" name="nombre" id="nombre" required />
+          <input
+            type="text"
+            className="text-black"
+            name="nombre"
+            id="nombre"
+            required
+          />
           <div className="col-span-2 row-span-2"></div>
 
           <label htmlFor="desc">Descripcion: </label>
-          <input type="text" className="text-black" name="desc" id="desc" required />
+          <input
+            type="text"
+            className="text-black"
+            name="desc"
+            id="desc"
+            required
+          />
           <div className="col-span-2 row-span-2"></div>
 
-          <button type="submit" className="row-span-2 col-span-2 outline hover:bg-slate-600 bg-slate-500 rounded-md shadow-2xl mx-10">
+          <button
+            type="submit"
+            className="row-span-2 col-span-2 outline hover:bg-slate-600 bg-slate-500 rounded-md shadow-2xl mx-10"
+          >
             Registrar!
           </button>
         </form>
@@ -94,7 +136,7 @@ export default function MiTienda() {
                 <tr
                   key={index}
                   className="odd:bg-slate-600 hover:cursor-pointer even:bg-slate-400"
-                  data-id={value.id_producto}
+                  data-id_producto={value.id_producto}
                   onDoubleClick={agregar_producto}
                 >
                   <td className="py-2">{value.titulo}</td>
@@ -117,14 +159,30 @@ export default function MiTienda() {
           </thead>
           <tbody className="overflow-scroll">
             {displayStock.map((item: any, index: any) => (
-              <tr key={index}>
+              <tr data-id_producto={item.id_producto} key={index}>
                 <td>{item.titulo}</td>
-                <td>{item.cantidad}</td>
+                <td>
+                  <input
+                    type="number"
+                    value={item.cantidad}
+                    onChange={(e) => actualizarNumero(index, e.target.value)}
+                    className="bg-slate-950 w-16 text-center"
+                    min="0"
+                  />
+                </td>
                 <td>{item.desc}</td>
               </tr>
             ))}
           </tbody>
         </table>
+        <div className="w-full flex justify-center items-center h-fit">
+          <button
+            onClick={enviar}
+            className="bg-blue-400 py-5 px-10 rounded-xl mt-5"
+          >
+            Enviar
+          </button>
+        </div>
       </div>
     </div>
   );
