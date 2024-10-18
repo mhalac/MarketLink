@@ -1,11 +1,11 @@
 "use client";
 import React, { useState } from 'react';
-import { signOut } from "next-auth/react"
+import { signOut, signIn, useSession } from "next-auth/react";
 
 export default function ThreeBarMenu() {
   const [isOpen, setIsOpen] = useState(false);
   const [rol, setRol] = useState(1);
-
+  const { data: session, status } = useSession();
 
   const openMenu = () => {
     setIsOpen(true);
@@ -15,31 +15,30 @@ export default function ThreeBarMenu() {
     setIsOpen(false);
   };
 
-  const cambiarcuenta = async () =>{
-   const nrol = rol === 1 ? 2 : 1;
-   setRol(nrol); 
-   
-   try {
-    const response = await fetch('/api/rolUpdate', { // Cambia a ruta absoluta
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ nrol }),
-    });
-    if (response.ok) {
-      console.log('Rol se cambió');
-    } else {
-      console.error('Error al cambiar el rol');
+  const cambiarcuenta = async () => {
+    const nrol = rol === 1 ? 2 : 1;
+    setRol(nrol);
+
+    try {
+      const response = await fetch('/api/rolUpdate', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ nrol }),
+      });
+      if (response.ok) {
+        console.log('Rol se cambió');
+      } else {
+        console.error('Error al cambiar el rol');
+      }
+    } catch (error) {
+      console.error('Error en la petición:', error);
     }
-  } catch (error) {
-    console.error('Error en la petición:', error);
-  }
-};
+  };
 
   return (
     <div className="relative z-50 ">
-
       <div
         className="absolute left-0 h-screen w-6 z-40"
         onMouseEnter={openMenu} //abre el menu 
@@ -65,7 +64,6 @@ export default function ThreeBarMenu() {
             onClick={closeMenu}
             className="mb-5 text-lg border-2 border-cyan-500 rounded-full w-[70%]">
             <a className="text-xl m-2 font-extrabold bg-cyan-500 bg-clip-text text-transparent leading-normal">Cerrar</a>
-            {/* Botón para cerrar el menú */}
           </button>
 
           <button className="mb-5 border-2 border-cyan-500 rounded-full w-[70%]">
@@ -84,9 +82,15 @@ export default function ThreeBarMenu() {
             <a href='../contactanos' className="text-xl m-2 font-extrabold bg-cyan-500 bg-clip-text text-transparent leading-normal">Contactanos</a>
           </button>
 
-          <button onClick={() => signOut()} className="mb-5 border-2 border-cyan-500 rounded-full w-[70%]">
-            <a href='../' className="text-xl m-2 font-extrabold bg-cyan-500 bg-clip-text text-transparent leading-normal">Cerrar Sesión</a>
-          </button>
+          {status === "authenticated" ? (
+            <button onClick={() => signOut()} className="mb-5 border-2 border-cyan-500 rounded-full w-[70%]">
+              <a className="text-xl m-2 font-extrabold bg-cyan-500 bg-clip-text text-transparent leading-normal">Cerrar Sesion</a>
+            </button>
+          ) : (
+            <button onClick={() => signIn()} className="mb-5 border-2 border-cyan-500 rounded-full w-[70%]">
+              <a className="text-xl m-2 font-extrabold bg-cyan-500 bg-clip-text text-transparent leading-normal">Iniciar Sesion</a>
+            </button>
+          )}
         </nav>
       </div>
     </div>

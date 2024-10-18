@@ -132,7 +132,7 @@ export default function MiTienda() {
               </tr>
             </thead>
             <tbody className="overflow-scroll">
-              {misProductos.map((value: any, index: any) => (
+              {misProductos && misProductos.length > 0 && misProductos.map((value: any, index: any) => (
                 <tr
                   key={index}
                   className="odd:bg-slate-600 hover:cursor-pointer even:bg-slate-400"
@@ -143,6 +143,7 @@ export default function MiTienda() {
                   <td className="py-2">{value.desc}</td>
                 </tr>
               ))}
+
             </tbody>
           </table>
         </div>
@@ -158,7 +159,7 @@ export default function MiTienda() {
             </tr>
           </thead>
           <tbody className="overflow-scroll">
-            {displayStock.map((item: any, index: any) => (
+            {displayStock && displayStock.length > 0 && displayStock.map((item: any, index: any) => (
               <tr data-id_producto={item.id_producto} key={index}>
                 <td>{item.titulo}</td>
                 <td>
@@ -174,6 +175,7 @@ export default function MiTienda() {
               </tr>
             ))}
           </tbody>
+
         </table>
         <div className="w-full flex justify-center items-center h-fit">
           <button
