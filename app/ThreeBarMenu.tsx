@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from 'react';
+import { signOut } from "next-auth/react"
 
 export default function ThreeBarMenu() {
   const [isOpen, setIsOpen] = useState(false);
@@ -27,7 +28,7 @@ export default function ThreeBarMenu() {
       body: JSON.stringify({ nrol }),
     })
     if (response.ok) {
-      console.log('Rol cambiado exitosamente');
+      console.log('Rol se cambio');
     } else {
       console.error('Error al cambiar el rol');
     }
@@ -67,27 +68,24 @@ export default function ThreeBarMenu() {
             {/* Botón para cerrar el menú */}
           </button>
 
-
-          <button className="mb-5 text-lg border-2 border-cyan-500 rounded-full w-[70%]">
-            <a href="../" className="text-xl m-2 font-extrabold bg-cyan-500 bg-clip-text text-transparent leading-normal">Inicio</a>
-          </button>
-
           <button className="mb-5 border-2 border-cyan-500 rounded-full w-[70%]">
             <a href="../tiendas" className="text-xl m-2 font-extrabold bg-cyan-500 bg-clip-text text-transparent leading-normal">Tiendas</a>
           </button>
 
           <button onClick={cambiarcuenta} className="mb-5 border-2 border-cyan-500 rounded-full w-[70%]">
-            
-            <a href='../tiendas/registrar' className="text-xl m-2 font-extrabold bg-cyan-500 bg-clip-text text-transparent leading-normal">cambiar cuenta</a>
+            <a href='../tiendas/registrar' className="text-xl m-2 font-extrabold bg-cyan-500 bg-clip-text text-transparent leading-normal">Cambiar Cuenta</a>
           </button>
-
 
           <button className="mb-5 border-2 border-cyan-500 rounded-full w-[70%]">
             <a href='../tiendas/mitienda' className="text-xl m-2 font-extrabold bg-cyan-500 bg-clip-text text-transparent leading-normal">Mi Tienda</a>
           </button>
 
           <button className="mb-5 border-2 border-cyan-500 rounded-full w-[70%]">
-            <a href='../contactanos' className="text-xl m-2 font-extrabold bg-cyan-500 bg-clip-text text-transparent leading-normal">contactanos</a>
+            <a href='../contactanos' className="text-xl m-2 font-extrabold bg-cyan-500 bg-clip-text text-transparent leading-normal">Contactanos</a>
+          </button>
+
+          <button onClick={() => signOut()} className="mb-5 border-2 border-cyan-500 rounded-full w-[70%]">
+            <a href='../' className="text-xl m-2 font-extrabold bg-cyan-500 bg-clip-text text-transparent leading-normal">Cerrar Sesión</a>
           </button>
         </nav>
       </div>
