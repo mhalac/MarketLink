@@ -3,7 +3,6 @@
 import "@/app/globals.css"
 import { useEffect, useState } from "react";
 import ThreeBarMenu from "@/app/ThreeBarMenu";
-import Perfil from "@/app/perfil";
 export default function Tienda({ params }: { params: { tienda: string } }) {
   const [props, changeProps] = useState({
     title: "Cargando",
@@ -27,16 +26,14 @@ export default function Tienda({ params }: { params: { tienda: string } }) {
       <div className="absolute left-0 top-0">
         <ThreeBarMenu />
       </div>
-      <div className="absolute right-0 top-0">
-        <Perfil></Perfil>
-      </div>
-      <div className="w-[90%] h-[80%] bg-cyan-500 fixed rounded-lg grid grid-rows-5 justify-center shadow-md p-10">
-        <h1 className="text-white xl:text-8xl md:text-4xl col-span-3 text-center">
-          {props.title}
-        </h1>
-        <p className="text-3xl text-white mt-10">
-          {props.desc}
-        </p>
+      <h1 className="text-cyan-600 xl:text-8xl md:text-4xl col-span-3 text-center">
+        {props.title}
+      </h1>
+      <p className="text-3xl text-cyan-600 mt-10">
+        {props.desc}
+      </p>
+      <div>
+        folaaa
       </div>
     </div>
   );
