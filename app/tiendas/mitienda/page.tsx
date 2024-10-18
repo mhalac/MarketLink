@@ -126,7 +126,7 @@ export default function MiTienda() {
         </form>
       </div>
 
-      <div className="w-[30vw] h-[90vh] rounded-2xl flex flex-col justify-center p-2">
+      <div className="w-[30vw] h-[90vh] rounded-2xl flex flex-col p-2">
         <div className="w-full max-h-full overflow-hidden ">
           <table className="table-fixed text-center bg-cyan-500 border-separate w-full rounded-t-lg shadow-2xl">
             <thead>
