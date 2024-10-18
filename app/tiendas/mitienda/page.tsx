@@ -137,9 +137,9 @@ export default function MiTienda() {
             </thead>
           </table>
         </div>
-        <div className="w-[29vw] max-h-full scrollbar-hidden overflow-auto">
+        <div className="w-[100%] max-h-[80vh] overflow-y-auto scrollbar-hidden">
           <table className="table-fixed text-center bg-cyan-500 border-separate w-full rounded-b-lg shadow-2xl">
-            <tbody className="">
+            <tbody>
               {misProductos && misProductos.length > 0 && misProductos.map((value: any, index: any) => (
                 <tr
                   key={index}

@@ -71,7 +71,7 @@ export default function ThreeBarMenu() {
           </button>
 
           <button onClick={cambiarcuenta} className="mb-5 border-2 border-cyan-500 rounded-full w-[70%]">
-            <a href='../tiendas/registrar' className="text-xl m-2 font-extrabold bg-cyan-500 bg-clip-text text-transparent leading-normal">Cambiar Cuenta</a>
+            <a href='../tiendas/registrar' className="text-xl m-2 font-extrabold bg-cyan-500 bg-clip-text text-transparent leading-normal">Añadir Negocio</a>
           </button>
 
           <button className="mb-5 border-2 border-cyan-500 rounded-full w-[70%]">
