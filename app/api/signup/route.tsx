@@ -13,12 +13,14 @@ export async function POST(req: NextRequest) {
 
     const check_stmt = db.prepare("SELECT username FROM usuario WHERE username = ?")
     const check = check_stmt.all(user)
+    
     if (check.length > 0) {
         return NextResponse.json({ status: 405 })
+
     }
 
     const stmt = db.prepare("INSERT INTO usuario(id_usuario, rol, username, password) VALUES(?, ?, ?, ?)");
-    stmt.run(uuidv4(), 2, user, hashed);
+    stmt.run(uuidv4(), 1, user, hashed);
 
     return NextResponse.json({ status: 200 })
 

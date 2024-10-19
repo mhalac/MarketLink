@@ -7,16 +7,26 @@ export default function MiTienda() {
   const [misProductos, setMisProductos] = useState<any[]>([]);
   const [displayStock, setDisplayStock] = useState<any[]>([]);
   const router = useRouter()
-
+  const [repeated_status, changeRepeated] = useState("hidden")
   async function crear_producto(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
     const formData = new FormData(event.currentTarget);
 
-    await fetch("/api/mitienda/misproductos", {
+    const prod = await fetch("/api/mitienda/misproductos", {
       method: "POST",
       body: formData,
     });
+    const prodjson = await prod.json()
+    if(prodjson.status == 405){
+      changeRepeated("visible")
+      console.log("ran")
+    }else{
+      changeRepeated("hidden")
+      console.log("ran2")
+
+    }
+    
 
     await RequestStoreData();
   }
@@ -94,7 +104,7 @@ export default function MiTienda() {
       <div className="absolute left-0 top-0">
         <ThreeBarMenu />
       </div>
-      <div className="w-[30vw] h-[70dvh] p-2">
+      <div className="w-[30vw] h-[100%] min-h-[100%] max-h-[100%] p-2">
         <form
           onSubmit={crear_producto}
           className="grid h-[100%] bg-cyan-600 p-10 shadow-2xl rounded-2xl grid-cols-2 grid-rows-12"
@@ -122,7 +132,8 @@ export default function MiTienda() {
             id="desc"
             required
           />
-          <div className="col-span-2 row-span-2"></div>
+          <div className="col-span-2 row-span-1"></div>
+          <h1 className={"col-span-2 text-2xl text-center text-red-100 underline " + repeated_status}>Nombre repetido</h1>
 
           <button
             type="submit"

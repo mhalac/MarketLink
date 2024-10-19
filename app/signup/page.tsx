@@ -1,15 +1,31 @@
 "use client"
 
+import { signIn } from "next-auth/react";
+import { useState } from "react";
+
 
 export default function MenuRegister() {
+    const [visible,changeVisible] = useState("hidden")
     async function Submit(e: React.FormEvent<HTMLFormElement>){
-        e.preventDefault(); // Prevent the default form submission
+        e.preventDefault();
         const formdata = new FormData(e.currentTarget);
 
         const data = await fetch("/api/signup/",{
             method:"POST",
             body: formdata,
         })
+        const resp = await data.json()
+        if (resp.status === 200){
+
+            await signIn("credentials",{
+                username:formdata.get("username"),
+                password:formdata.get("password"),
+                redirect:true,
+                callbackUrl:"/tiendas"
+            })
+        }else{
+            changeVisible("visible")
+        }
     }
 
     return(            
@@ -41,11 +57,11 @@ export default function MenuRegister() {
                             id="password" 
                             type="password" 
                         />
-
+                        <h1 className={'text-red-500 text-2xl ' + visible}>Usuario/Password no valido </h1>
                         <button 
                             className="bg-cyan-500 rounded hover:bg-cyan-600 hover:shadow-md text-2xl text-white m-6 w-[50%] shadow-2xl" 
                             type="submit">
-                                <a href="/tiendas" className="w-[100%]">ENVIAR</a>
+                                ENVIAR
                         </button>
                     </form>
                 </div>

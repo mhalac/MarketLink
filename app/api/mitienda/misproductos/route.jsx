@@ -39,6 +39,11 @@ export async function POST(req) {
     const negocioStmt = db.prepare("SELECT id_negocio FROM negocio WHERE id_usuario = ?");
     const negocio = negocioStmt.get(usuario.id_usuario);
 
+    const exsists = db.prepare("SELECT * FROM producto WHERE titulo = ? AND id_negocio = ?").all(form.get("nombre"),negocio.id_negocio)
+    if(exsists.length > 0){
+        return NextResponse.json({ status: "405" });
+    }
+
 
     const stmt = db.prepare("INSERT INTO producto(titulo, `desc`, id_negocio) VALUES(?, ?, ?)");
     stmt.run(form.get("nombre"), form.get("desc"), negocio.id_negocio);

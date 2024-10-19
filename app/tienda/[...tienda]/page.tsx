@@ -3,8 +3,11 @@
 import "@/app/globals.css"
 import { useEffect, useState } from "react";
 import ThreeBarMenu from "@/app/ThreeBarMenu";
+import { getSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 export default function Tienda({ params }: { params: { tienda: string } }) {
+  const router = useRouter()
   const [props, changeProps] = useState({
     title: "Cargando...",
     desc: "Cargando...",
@@ -14,6 +17,11 @@ export default function Tienda({ params }: { params: { tienda: string } }) {
 
   useEffect(() => {
     async function GetProps() {
+      const session = await getSession();
+
+      if (!session){
+        router.replace("/")
+      }
       const req = await fetch("/api/listado/" + params.tienda[0], {
         method: "GET"
       });
@@ -27,7 +35,7 @@ export default function Tienda({ params }: { params: { tienda: string } }) {
       });
     }
     GetProps();
-  }, [params.tienda]);
+  }, [params.tienda,router]);
 
   return (
     <div className="bg-gradient-to-b from-slate-300 to-slate-100 w-full h-screen flex flex-col items-center">

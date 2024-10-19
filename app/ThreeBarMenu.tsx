@@ -27,11 +27,7 @@ export default function ThreeBarMenu() {
         },
         body: JSON.stringify({ nrol }),
       });
-      if (response.ok) {
-        console.log('Rol se cambió');
-      } else {
-        console.error('Error al cambiar el rol');
-      }
+
     } catch (error) {
       console.error('Error en la petición:', error);
     }
@@ -41,7 +37,7 @@ export default function ThreeBarMenu() {
     <div className="relative z-50 ">
       <div
         className="absolute left-0 h-screen w-6 z-40"
-        onMouseEnter={openMenu} //abre el menu 
+        onMouseEnter={openMenu}
       ></div>
 
       <button
