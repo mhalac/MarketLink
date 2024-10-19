@@ -9,7 +9,6 @@ export default function Stores() {
 
   useEffect(() => {
     async function GetServerProps() {
-      // aca iria el codigo donde awaiteo un fetch de las tiendas.
       const req: any = await fetch("api/creacion/tienda", {
         method: "GET",
       });
@@ -29,6 +28,7 @@ export default function Stores() {
 
   return (
     <div className="grid xl:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 overflow-y-auto p-10 m-10 row-span-4  h-screen gap-5 col-span-3">
+      
       {list}
     </div>
   );

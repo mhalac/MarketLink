@@ -58,7 +58,7 @@ export default function ThreeBarMenu() {
           className={`menu-bar fixed top-0 w-64 h-full bg-slate-200 shadow-xl text-white
                       flex flex-col items-center pt-10 transition-transform duration-300 
                       ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}
-          onMouseLeave={closeMenu}  // Cierra el menu 
+          onMouseLeave={closeMenu}
         >
           <button
             onClick={closeMenu}
@@ -66,20 +66,22 @@ export default function ThreeBarMenu() {
             <a className="text-xl m-2 font-extrabold bg-cyan-500 bg-clip-text text-transparent leading-normal">Cerrar</a>
           </button>
 
-          <button className="mb-5 border-2 border-cyan-500 rounded-full w-[70%]">
+          {session?.user.rol === 1 || session?.user.rol === 2 ? (<button className="mb-5 border-2 border-cyan-500 rounded-full w-[70%]">
             <a href="../tiendas" className="text-xl m-2 font-extrabold bg-cyan-500 bg-clip-text text-transparent leading-normal">Tiendas</a>
-          </button>
+          </button>):(<></>)}
+          {
+            session?.user.rol === 1 ? (<button onClick={cambiarcuenta} className="mb-5 border-2 border-cyan-500 rounded-full w-[70%]">
+              <a href='../tiendas/registrar' className="text-xl m-2 font-extrabold bg-cyan-500 bg-clip-text text-transparent leading-normal">Añadir Negocio</a>
+            </button>) : (<></>)
+          }
 
-          <button onClick={cambiarcuenta} className="mb-5 border-2 border-cyan-500 rounded-full w-[70%]">
-            <a href='../tiendas/registrar' className="text-xl m-2 font-extrabold bg-cyan-500 bg-clip-text text-transparent leading-normal">Añadir Negocio</a>
-          </button>
 
-         {session?.user.rol === 2 ? ( <button className="mb-5 border-2 border-cyan-500 rounded-full w-[70%]">
+          {session?.user.rol === 2 ? (<button className="mb-5 border-2 border-cyan-500 rounded-full w-[70%]">
             <a href='../tiendas/mitienda' className="text-xl m-2 font-extrabold bg-cyan-500 bg-clip-text text-transparent leading-normal">Mi Tienda</a>
-          </button>):(
+          </button>) : (
             <>
             </>
-)}
+          )}
 
           <button className="mb-5 border-2 border-cyan-500 rounded-full w-[70%]">
             <a href='../contactanos' className="text-xl m-2 font-extrabold bg-cyan-500 bg-clip-text text-transparent leading-normal">Contactanos</a>

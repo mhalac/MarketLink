@@ -1,10 +1,12 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import ThreeBarMenu from "@/app/ThreeBarMenu";
-
+import { getSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 export default function MiTienda() {
   const [misProductos, setMisProductos] = useState<any[]>([]);
   const [displayStock, setDisplayStock] = useState<any[]>([]);
+  const router = useRouter()
 
   async function crear_producto(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -20,6 +22,7 @@ export default function MiTienda() {
   }
 
   async function agregar_producto(e: any) {
+
     const new_array = [...displayStock];
     const tds = e.currentTarget.querySelectorAll("td");
     const productId = Number(e.currentTarget.dataset.id_producto);
@@ -39,6 +42,10 @@ export default function MiTienda() {
   }
 
   async function RequestStoreData() {
+    const session = await getSession()
+    if(session === null){
+      router.push("/")
+    }
     const productos = await fetch("/api/mitienda/misproductos", {
       method: "GET",
     });
@@ -48,7 +55,7 @@ export default function MiTienda() {
 
     const misProductosData = (await productos.json()).final_result;
     const localStockData = (await stock.json()).final_result;
-
+    
     setMisProductos(misProductosData);
     setDisplayStock(localStockData);
   }
