@@ -30,11 +30,11 @@ export default function Tienda({ params }: { params: { tienda: string } }) {
   }, [params.tienda]);
 
   return (
-    <div className="bg-gradient-to-b from-slate-300 to-slate-100 w-full min-h-screen flex flex-col items-center py-10">
+    <div className="bg-gradient-to-b from-slate-300 to-slate-100 w-full h-screen flex flex-col items-center">
       <div className="absolute left-0 top-">
         <ThreeBarMenu />
       </div>
-      <h1 className="text-cyan-700 xl:text-6xl md:text-5xl sm:text-4xl font-bold text-center">
+      <h1 className="text-cyan-700 xl:text-6xl md:text-5xl sm:text-4xl font-bold text-center m-6">
         {props.title}
       </h1>
       <p className="text-2xl text-gray-700 mt-4">{props.desc}</p>

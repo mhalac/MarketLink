@@ -87,10 +87,10 @@ export default function MiTienda() {
       <div className="absolute left-0 top-0">
         <ThreeBarMenu />
       </div>
-      <div className="w-[30vw] h-[90vh] p-2">
+      <div className="w-[30vw] h-[70dvh] p-2">
         <form
           onSubmit={crear_producto}
-          className="grid bg-cyan-600 p-10 shadow-2xl rounded-2xl grid-cols-2 grid-rows-12"
+          className="grid h-[100%] bg-cyan-600 p-10 shadow-2xl rounded-2xl grid-cols-2 grid-rows-12"
         >
           <h1 className="text-5xl m-2 font-extrabold row-span-2 col-span-2 text-center">
             <a className="">Registrar Producto</a>

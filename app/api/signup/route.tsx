@@ -3,6 +3,7 @@ import getDB from "@/util/db";
 const db = getDB();
 const bcrypt = require('bcrypt');
 import { v4 as uuidv4 } from 'uuid';
+import { redirect } from "next/dist/server/api-utils";
 
 export async function POST(req: NextRequest) {
     const formdata = await req.formData();
@@ -19,6 +20,6 @@ export async function POST(req: NextRequest) {
     const stmt = db.prepare("INSERT INTO usuario(id_usuario, rol, username, password) VALUES(?, ?, ?, ?)");
     stmt.run(uuidv4(), 2, user, hashed);
 
-
     return NextResponse.json({ status: 200 })
+
 }

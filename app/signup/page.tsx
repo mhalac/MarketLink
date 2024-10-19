@@ -1,5 +1,5 @@
 "use client"
-import ThreeBarMenu from "../ThreeBarMenu";
+
 
 export default function MenuRegister() {
     async function Submit(e: React.FormEvent<HTMLFormElement>){
@@ -14,9 +14,7 @@ export default function MenuRegister() {
 
     return(            
         <div>
-            <div className="absolute left-0 top-0">
-                <ThreeBarMenu/>
-            </div>
+
             <div className="bg-slate-300 h-screen w-full flex flex-col justify-center items-center">
                 <div className="bg-slate-200 w-[300px] h-[350px] reactive flex flex-col justify-center rounded-lg shadow-2xl">
                     <form onSubmit={Submit} className="flex flex-col items-center">
@@ -47,7 +45,7 @@ export default function MenuRegister() {
                         <button 
                             className="bg-cyan-500 rounded hover:bg-cyan-600 hover:shadow-md text-2xl text-white m-6 w-[50%] shadow-2xl" 
                             type="submit">
-                            ENVIAR
+                                <a href="/tiendas" className="w-[100%]">ENVIAR</a>
                         </button>
                     </form>
                 </div>
