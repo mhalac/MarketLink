@@ -20,11 +20,8 @@ export default function MiTienda() {
     const prodjson = await prod.json()
     if(prodjson.status == 405){
       changeRepeated("visible")
-      console.log("ran")
     }else{
       changeRepeated("hidden")
-      console.log("ran2")
-
     }
     
 
