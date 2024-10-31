@@ -6,8 +6,8 @@ import SessionWrapper from "./components/sessionWrapper";
 const mukta = Barlow_Condensed({ subsets: ["latin"], weight: "400" });
 
 export const metadata: Metadata = {
-  title: "Login",
-  description: "i dont know",
+  title: "MarketLink",
+  description: "Revisa el stock de tus productos favoritos",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

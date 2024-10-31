@@ -5,9 +5,10 @@ import NavBar from "../../ui/nav_bar"
 const mukta = Barlow_Condensed({ subsets: ["latin"], weight: "400" });
 
 export const metadata: Metadata = {
-  title: "Tiendas",
-  description: "i dont know",
+  title: "MarketLink",
+  description: "Revisa el stock de tus productos favoritos",
 };
+
 
 export default function RootLayout({
   children,
