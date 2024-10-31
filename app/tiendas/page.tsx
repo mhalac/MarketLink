@@ -70,7 +70,9 @@ export default function Menu_Tiendas() {
         <div className="absolute left-0 top-0">
           <ThreeBarMenu />
         </div>
-        <h1 className="mt-36 text-6xl text-center text-cyan-600">Tiendas</h1>
+        <div className="text-6xl text-center text-cyan-600">
+          <h1 className="mt-24">Tiendas</h1>
+        </div>
         <div className="text-white h-[100%] w-screen">
           <Stores />
         </div>
