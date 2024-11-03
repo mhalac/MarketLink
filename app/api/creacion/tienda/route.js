@@ -44,29 +44,28 @@ export async function POST(req) {
 
 
 export async function GET(request) {
-    const url = new URL(request.url);
-    const search = (url.searchParams.get('search') || '').toLocaleLowerCase();
-    let result;
-  
-    if (search.trim() !== '') {
-      const statement = db.prepare(`
-        SELECT n.* 
-        FROM negocio n 
-        LEFT JOIN stock s ON s.id_negocio = n.id_negocio
-        LEFT JOIN producto p ON p.id_producto = s.id_producto
-        WHERE 
-          LOWER(n.titulo) LIKE ?
-          OR LOWER(n.desc) LIKE ?
-          OR LOWER(n.ubicacion) LIKE ?
-          OR LOWER(p.titulo) LIKE ?
-      `);
-      
-      result = statement.all(`%${search}%`, `%${search}%`, `%${search}%`, `%${search}%`);
-    } else {
-      const statement = db.prepare("SELECT * FROM negocio");
-      result = statement.all();
-    }
-  
-    return NextResponse.json({ status: 200, result });
+  const url = new URL(request.url);
+  const search = (url.searchParams.get('search') || '').toLocaleLowerCase();
+  let result;
+
+  if (search.trim() !== '') {
+    const statement = db.prepare(`
+      SELECT DISTINCT n.* 
+      FROM negocio n 
+      LEFT JOIN stock s ON s.id_negocio = n.id_negocio
+      LEFT JOIN producto p ON p.id_producto = s.id_producto
+      WHERE 
+        LOWER(n.titulo) LIKE ?
+        OR LOWER(n.desc) LIKE ?
+        OR LOWER(n.ubicacion) LIKE ?
+        OR LOWER(p.titulo) LIKE ?
+    `);
+    
+    result = statement.all(`%${search}%`, `%${search}%`, `%${search}%`, `%${search}%`);
+  } else {
+    const statement = db.prepare("SELECT DISTINCT * FROM negocio");
+    result = statement.all();
   }
-  
+
+  return NextResponse.json({ status: 200, result });
+}
