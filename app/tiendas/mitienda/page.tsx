@@ -132,11 +132,11 @@ export default function MiTienda() {
   }, []);
 
   return (
-    <div className="bg-slate-300 w-[100%] h-[100%] fixed rounded-lg grid grid-rows-2 grid-cols-3 shadow-md p-10">
+    <div className="bg-slate-300 w-[100%] h-[100%] flex flex-col md:flex-row gap-4 shadow-md p-10">
       <div className="absolute left-0 top-0">
         <ThreeBarMenu />
       </div>
-      <div className="w-[30vw] h-[100%] min-h-[100%] max-h-[100%] p-2">
+      <div className="w-442px h-617px p-4 flex-1">
         <form
           onSubmit={crear_producto}
           className="grid h-[100%] bg-cyan-600 p-10 shadow-2xl rounded-2xl grid-cols-2 grid-rows-12"
@@ -182,12 +182,12 @@ export default function MiTienda() {
             type="submit"
             className="row-span-2 col-span-2 outline bg-cyan-600 hover:bg-cyan-700 rounded-md shadow-2xl mx-10 text-lg m-2 font-extrabold"
           >
-            Registrar!
+          Registrar!
           </button>
         </form>
       </div>
 
-      <div className="w-[30vw] h-[90vh] rounded-2xl flex flex-col p-2">
+      <div className="w-442px h-617px rounded-2xl flex flex-col p-4 flex-1">
         <div className="w-full max-h-full overflow-hidden ">
           <table className="table-fixed text-center bg-cyan-500 border-separate w-full rounded-t-lg shadow-2xl">
             <thead>
@@ -230,7 +230,7 @@ export default function MiTienda() {
         </div>
       </div>
 
-      <div className="w-[34vw] h-[90vh] p-2">
+      <div className="w-442px h-617px p-4 flex-1">
         <table className="table-auto text-left bg-cyan-500 border-separate border-spacing-1 w-full rounded-lg shadow-lg">
           <thead>
             <tr className="bg-cyan-700 text-white font-extrabold">
