@@ -42,7 +42,7 @@ export default function Menu_Tiendas() {
         <div className="absolute rounded-2xl flex flex-row items-center justify-center top-[4%] right-[10%] p-3 w-[18%] h-[8%] ">
           <input
             type="text"
-            className="w-[80%] h-[100%] text-3xl p-4 rounded-2xl text-black"
+            className="max-w-[188px] max-h-[34px] min-w-[120px] min-h-[34px] text-3xl p-4 rounded-2xl text-black"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
