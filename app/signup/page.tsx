@@ -3,7 +3,6 @@
 import { signIn } from "next-auth/react";
 import { useState } from "react";
 
-
 export default function MenuRegister() {
     const [visible,changeVisible] = useState("hidden")
     async function Submit(e: React.FormEvent<HTMLFormElement>){

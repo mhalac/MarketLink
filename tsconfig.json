@@ -1,6 +1,10 @@
 {
   "compilerOptions": {
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -18,9 +22,32 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"]
-    }
+      "@/*": [
+        "./*"
+      ]
+    },
+    "target": "ES2017"
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/api/test.js", "app/api/test.js", "app/api/db/handle_user.js", "app/api/register/route.tsx", "app/ui/singup/singup_form.jsx", "ignoremiddleware.js", "app/api/auth/[...nextauth]/route.ts", "app/api/login2/route.js", "app/api/login2/route.js", "app/api/listado/[...listado]/route.js", "lib/authOptions.js", "app/api/db/functions.js", "app/api/creacion/tienda/route.js"],
-  "exclude": ["node_modules"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "app/api/test.js",
+    "app/api/test.js",
+    "app/api/db/handle_user.js",
+    "app/api/register/route.tsx",
+    "app/ui/singup/singup_form.jsx",
+    "ignoremiddleware.js",
+    "app/api/auth/[...nextauth]/route.ts",
+    "app/api/login2/route.js",
+    "app/api/login2/route.js",
+    "app/api/listado/[...listado]/route.js",
+    "lib/authOptions.js",
+    "app/api/db/functions.js",
+    "app/api/creacion/tienda/route.js"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

@@ -192,11 +192,9 @@ export default function MiTienda() {
           <table className="table-fixed text-center bg-cyan-500 border-separate w-full rounded-t-lg shadow-2xl">
             <thead>
               <tr>
-                <th className="px-4 py-2 text-4xl font-extrabold">Nombre</th>
-                <th className="px-4 py-2 text-4xl font-extrabold">
-                  Descripcion
-                </th>
-                <th className="px-4 py-2 text-4xl font-extrabold">Acciones</th>
+                <th className=" w-[70%] px-4 py-2 text-4xl font-extrabold">Nombre</th>
+                <th className=" w-[70%] px-4 py-2 text-4xl font-extrabold">Desc</th>
+                <th className=" w-[70%] px-4 py-2 text-4xl font-extrabold">Acciones</th>
               </tr>
             </thead>
           </table>
